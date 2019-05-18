@@ -216,30 +216,8 @@ class GameCard99:
             self.play_card(hand_no - 1, pile_no - 1)
 
 
-nn_class = sklearn.neural_network.MLPClassifier(solver='lbfgs', alpha=1e-5,
-                                                hidden_layer_sizes=(5, 2), random_state=1)
-nn_regres = sklearn.neural_network.MLPRegressor(solver='lbfgs', alpha=1e-5,
-                                                hidden_layer_sizes=(5, 10), random_state=1)
-# X = [[-61, 25, 0.62, 0.64, 2, -35, 0.7, 0.65], [2, -5, 0.58, 0.7, -3, -15, 0.65, 0.52]]
-# y = [[0.63, 0.64], [0.58, 0.61]]
-
-X = np.random.rand(10)
-y = np.where(X > 0.5, 1, -1)
-# print(y)
-# y = np.random.rand(10)
-print(X)
-print(y)
-# X = X.reshape(-1, 1)
-# y = y.reshape(-1, 1)
-
-nn_class.predict([X, y])
-
-# plt.scatter(X, y)
-for x in np.linspace(0, 10, 100):
-    pass
-
-# nn.predict()
 app = GameCard99()
+app.start_game()
 # app.start_game(load_save=True)
 
 # file = open('data/temp.json', 'w')
