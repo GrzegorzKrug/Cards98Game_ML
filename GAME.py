@@ -9,7 +9,9 @@ import numpy as np
 # import keras_gpu
 # import keras
 
-
+'''
+Testing from laptops
+'''
 # from tensorflow.keras import layers
 
 import texttable as tt
