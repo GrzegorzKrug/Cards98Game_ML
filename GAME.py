@@ -9,14 +9,6 @@ import numpy as np
 # import keras_gpu
 # import keras
 
-'''
-Testing from laptops
-PC Update
-'''
-
-'''
-Test 2 after test PC
-'''
 # from tensorflow.keras import layers
 
 import texttable as tt
@@ -25,7 +17,9 @@ import texttable as tt
 class GameCard99:
     ''' Piles    1: GoingUp 2: GoingUp
         3: GoingDown 4: GoingDown
-        Input: hand_number, pile number ; Separator is not necessary'''
+        Input: hand_number, pile number ; Separator is not necessary
+    '''
+    
     def __init__(self):
         # self.pile_going_up = [1, 1]
         # self.pile_going_down = [100, 100]
@@ -34,10 +28,14 @@ class GameCard99:
         self.hand = []
 
     def calculate_chance_10(self, cards):
+        #
+        # Check propabality of playing Card Higher or lower by 10
+        #        
         lower_card_chance = []
         higher_card_chance = []
+        
         if len(cards) != 8:
-            input(len(cards))
+            input("Cards Len =" + str(len(cards)))
 
         if len(self.deck) > 0:
             chance = round(1 / len(self.deck) * 100, 2)
@@ -46,24 +44,34 @@ class GameCard99:
             chance = 0
 
         for card in cards:
-
+            # Checking for cards in deck -> Chance %
+            # Checking for cards in hand -> 100%
+            # Not Checking piles
             if card - 10 in self.deck:
                 lower_card_chance.append(chance)
-            elif (card - 10 in self.piles[2:4]) or card - 10 in self.hand:
+##            elif (card - 10 in self.piles[2:4]) or card - 10 in self.hand:
+            elif card - 10 in self.hand:                
                 lower_card_chance.append('100%')
             else:
                 lower_card_chance.append('0%')
 
             if card+10 in self.deck:
                 higher_card_chance.append(chance)
-            elif card + 10 in self.piles[0:2] or card + 10 in self.hand:
+##            elif card + 10 in self.piles[0:2] or card + 10 in self.hand:
+            elif card + 10 in self.hand:
                 higher_card_chance.append('100%')
             else:
                 higher_card_chance.append('0%')
-
         return[lower_card_chance, higher_card_chance]
 
     def check_move(self, hand_id, pile_id):
+        #
+        # Method Checks if move is proper
+        # Returns True if valide
+        # Returns False if invalid
+        # Used in checking for End Conditions
+        # Copied from Play Card Method
+        #
         if hand_id < 0 or hand_id > 7:
             # print('Error: Invalid hand index')
             return False
@@ -93,12 +101,18 @@ class GameCard99:
                 return False
 
     def display_table(self):
+        #
+        # Showing Table.
+        # Showing Hand.
+        # Showing Chances of next Cards.
+        #
         print('\n' + '='*5 + ' Turn =', self.turn, '\nCards Left:', self.deck)
 
         piles = tt.Texttable()
-        piles.header(['\\', 'A', 'B'])
-
+        
+        piles.add_row(['↑ Pile ↑', '1', '2'])
         piles.add_row(['↑ Pile ↑', self.piles[0], self.piles[1]])
+        piles.add_row(['↓ Pile ↓', 3, 4])
         piles.add_row(['↓ Pile ↓', self.piles[2], self.piles[3]])
         print(piles.draw())
 
@@ -108,15 +122,20 @@ class GameCard99:
         [lower_chance, higher_chance] = self.calculate_chance_10(self.hand)
 
         # print(['Lower Chance'] + lower_chance)
-        hand.add_row(['Lower Chance'] + lower_chance)
+        hand.add_row(['Chance of lower Card'] + lower_chance)
         hand.add_row(['Hand'] + self.hand)
-        hand.add_row(['Higher Chance'] + higher_chance)
+        hand.add_row(['Chance of higher Card'] + higher_chance)
 
         print(hand.draw())
         # print(hand.draw())
         # print(hand.draw())
 
     def end_condition(self):
+        #
+        # Cheking for game over.
+        # Checking if any move is valid.
+        # Cheking if any cards left.
+        #
         end_game = None
         next_move = None
         for hand_id in range(8):
@@ -138,7 +157,9 @@ class GameCard99:
         return end_game
 
     def get_play_input(self):
-        # Returns index based on input
+        #
+        # Converting Indexes [1 .. n] to [0 .. (n -1)]
+        #
         print('Select Card and pile:')
         game_input = input()
         res = re.findall(r'\d', game_input)
@@ -149,18 +170,31 @@ class GameCard99:
             return[0, 0]
 
     def input_random(self):
+        #
+        # Random input generators (for testing purposes)
+        #
         a = round(random.random()*7)+1
         b = round(random.random()*3)+1
         # print(a, b)
         return a, b
 
     def hand_fill(self):
+        #
+        # Fill Hand with cards from deck
+        # Hand is always 8
+        #
         while len(self.hand) < 8 and len(self.deck) > 0:
             self.hand.append(self.deck[0])
             self.deck.pop(0)
         self.hand.sort()
 
     def play_card(self, hand_id, pile_id):
+        #
+        # Plays Card from hand to pile.
+        # Checks for Valid move.
+        # Invalid moves return None.
+        # Add Turn Counter at proper moves.
+        #
         if hand_id < 0 or hand_id > 7:
             print('Error: Invalid hand index')
             return None
@@ -190,9 +224,14 @@ class GameCard99:
         self.turn += 1
 
     def reset(self):
+        #
+        # Restart Game 
         self.__init__()
 
     def start_game(self, load_save=False):
+        #
+        # Start New Game or Load Save
+        # 
         self.reset()
 
         if load_save:
@@ -207,6 +246,9 @@ class GameCard99:
             print("\nYou lost")
 
     def tick_game(self):
+        #
+        # Tick
+        #
         self.turn = 0
         while True:
 
