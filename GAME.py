@@ -262,14 +262,14 @@ class GameCard99:
         self.turn = 0
         while True:
 
-            self.hand_fill()
-            # input(self.hand)
+            self.hand_fill()            
             self.display_table()
             status = self.end_condition()
 
             if status is not None:
                 return status
             user_input = self.get_user_input()
+            # Replace user input with reinforced NN
             
             if user_input is True:
                 self.play_card(self.hand_ind, self.pile_ind)
