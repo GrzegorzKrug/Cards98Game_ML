@@ -27,7 +27,7 @@ class GameCard99:
         self.deck = random.sample(range(2, 100), 98)  # 98)
         self.hand = []
 
-    def calculate_chance_10(self, cards):
+    def calculate_chance_10(self, cards, round_chance=True):
         #
         # Check propabality of playing Card Higher or lower by 10
         #        
@@ -39,7 +39,9 @@ class GameCard99:
 
         if len(self.deck) > 0:
             chance = round(1 / len(self.deck) * 100, 2)
-            chance = str(chance) + '%'
+            if round_chance is True:
+                chance = round(chance)
+            chance = chance
         else:
             chance = 0
 
@@ -51,17 +53,17 @@ class GameCard99:
                 lower_card_chance.append(chance)
 ##            elif (card - 10 in self.piles[2:4]) or card - 10 in self.hand:
             elif card - 10 in self.hand:                
-                lower_card_chance.append('100%')
+                lower_card_chance.append(100)
             else:
-                lower_card_chance.append('0%')
+                lower_card_chance.append(0)
 
             if card+10 in self.deck:
                 higher_card_chance.append(chance)
 ##            elif card + 10 in self.piles[0:2] or card + 10 in self.hand:
             elif card + 10 in self.hand:
-                higher_card_chance.append('100%')
+                higher_card_chance.append(100)
             else:
-                higher_card_chance.append('0%')
+                higher_card_chance.append(0)
         return[lower_card_chance, higher_card_chance]
 
     def check_move(self, hand_id, pile_id):
@@ -108,27 +110,22 @@ class GameCard99:
         #
         print('\n' + '='*5 + ' Turn =', self.turn, '\nCards Left:', self.deck)
 
-        piles = tt.Texttable()
-        
-        piles.add_row(['↑ Pile ↑', '1', '2'])
-        piles.add_row(['↑ Pile ↑', self.piles[0], self.piles[1]])
-        piles.add_row(['↓ Pile ↓', 3, 4])
-        piles.add_row(['↓ Pile ↓', self.piles[2], self.piles[3]])
+        piles = tt.Texttable()        
+        piles.add_row(['↑ Pile ↑', '1# ' + str(self.piles[0]), '2# ' + str(self.piles[1])])
+        piles.add_row(['↓ Pile ↓', '3# ' + str(self.piles[2]), '4# ' + str(self.piles[3])])
         print(piles.draw())
 
         hand = tt.Texttable()
-        # dupa1 = tt.Texttable()
-        # dupa2 = tt.Texttable()
         [lower_chance, higher_chance] = self.calculate_chance_10(self.hand)
 
-        # print(['Lower Chance'] + lower_chance)
-        hand.add_row(['Chance of lower Card'] + lower_chance)
-        hand.add_row(['Hand'] + self.hand)
-        hand.add_row(['Chance of higher Card'] + higher_chance)
-
+        lower_chance_row = [str(i)+'%' for i in lower_chance]  # Making text list, Adding % to number        
+        hand_with_nums = [str(i+1)+'# '+str(j) for i,j in enumerate(self.hand)]  # Numerated Hand
+        higher_chance_row = [str(i)+'%' for i in higher_chance]  # Making text list, Adding % to number
+        
+        hand.add_row(['Lower Card Chance'] + lower_chance_row)        
+        hand.add_row(['Hand'] + hand_with_nums)
+        hand.add_row(['Higher Card Chance'] + higher_chance_row)
         print(hand.draw())
-        # print(hand.draw())
-        # print(hand.draw())
 
     def end_condition(self):
         #
