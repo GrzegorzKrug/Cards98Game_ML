@@ -153,9 +153,9 @@ class GameCard99:
 
         return end_game
 
-    def get_play_input(self):
+    def get_user_input(self):
         #
-        # Converting Indexes [1 .. n] to [0 .. (n -1)]
+        # Reading numbers from input
         #
         print('Select Card and pile:')
         game_input = input()
@@ -172,7 +172,6 @@ class GameCard99:
         #
         a = round(random.random()*7)+1
         b = round(random.random()*3)+1
-        # print(a, b)
         return a, b
 
     def hand_fill(self):
@@ -257,15 +256,14 @@ class GameCard99:
             if status is not None:
                 return status
 
-            [hand_no, pile_no] = self.get_play_input()
-            # [hand_no, pile_no] = self.input_random()
+            [hand_no, pile_no] = self.get_user_input()
             self.play_card(hand_no - 1, pile_no - 1)
 
 
 app = GameCard99()
 app.start_game()
-# app.start_game(load_save=True)
 
+# app.start_game(load_save=True)
 # file = open('data/temp.json', 'w')
 # json.dump(app.deck, file)
 # file.close()
