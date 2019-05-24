@@ -157,14 +157,27 @@ class GameCard99:
         #
         # Reading numbers from input
         #
+        self.hand_ind, self.pile_ind = -1,-1
         print('Select Card and pile:')
         game_input = input()
-        res = re.findall(r'\d', game_input)
-
-        if len(res) == 2:
-            return int(res[0]), int(res[1])
+        
+        nums = re.findall(r'\d', game_input)
+        
+        if len(nums) == 2:
+            self.hand_ind = int(nums[0]) - 1
+            self.pile_ind = int(nums[1]) - 1
+            return True
         else:
-            return[0, 0]
+            game_input = game_input.split()
+            for word in game_input:
+                word = word.lower()
+
+                if 'res' in word or 'new' in word:
+                    self.reset()
+                    return None
+                
+                elif 'end' in word or 'over' in word:
+                    return False            
 
     def input_random(self):
         #
@@ -221,7 +234,8 @@ class GameCard99:
 
     def reset(self):
         #
-        # Restart Game 
+        # Restart Game
+        print('New Game!')
         self.__init__()
 
     def start_game(self, load_save=False):
@@ -255,9 +269,14 @@ class GameCard99:
 
             if status is not None:
                 return status
-
-            [hand_no, pile_no] = self.get_user_input()
-            self.play_card(hand_no - 1, pile_no - 1)
+            user_input = self.get_user_input()
+            
+            if user_input is True:
+                self.play_card(self.hand_ind, self.pile_ind)
+            elif user_input is False:
+                return False  # Interupted by user
+            else:
+                pass
 
 
 app = GameCard99()
