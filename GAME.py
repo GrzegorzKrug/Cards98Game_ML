@@ -26,6 +26,12 @@ class GameCard99:
         self.piles = [1, 1, 100, 100]
         self.deck = random.sample(range(2, 100), 98)  # 98)
         self.hand = []
+        self.turn = 0
+        self.score = 0
+        'NN Values for feedback'
+        self.GoodMove = 1
+        self.WrongMove = -1
+        self.SkipMove = 9  # This move + 8 cards in hand
 
     def calculate_chance_10(self, cards, round_chance=True):
         #
@@ -34,8 +40,8 @@ class GameCard99:
         lower_card_chance = []
         higher_card_chance = []
         
-        if len(cards) != 8:
-            input("Cards Len =" + str(len(cards)))
+##        if len(cards) != 8:
+##            print("Cards Len =" + str(len(cards)))
 
         if len(self.deck) > 0:
             chance = round(1 / len(self.deck) * 100, 2)
@@ -108,7 +114,9 @@ class GameCard99:
         # Showing Hand.
         # Showing Chances of next Cards.
         #
-        print('\n' + '='*5 + ' Turn =', self.turn, '\nCards Left:', self.deck)
+        print('\n' + '='*5 , 'Turn'.center(8), '=', self.turn)
+        print('='*5, 'Score'.center(8), '=', self.score)
+        print('Cards Left:', self.deck)
 
         piles = tt.Texttable()        
         piles.add_row(['↑ Pile ↑', '1# ' + str(self.piles[0]), '2# ' + str(self.piles[1])])
@@ -156,6 +164,11 @@ class GameCard99:
     def get_user_input(self):
         #
         # Reading numbers from input
+        # Method Return:
+        #   True:   Move
+        #   None:   Command
+        #   False:  Stop or Interrupts
+        #   Second object is score feedback
         #
         self.hand_ind, self.pile_ind = -1,-1
         print('Select Card and pile:')
@@ -177,16 +190,8 @@ class GameCard99:
                     return None
                 
                 elif 'end' in word or 'over' in word:
-                    return False            
-
-    def input_random(self):
-        #
-        # Random input generators (for testing purposes)
-        #
-        a = round(random.random()*7)+1
-        b = round(random.random()*3)+1
-        return a, b
-
+                    return False
+                
     def hand_fill(self):
         #
         # Fill Hand with cards from deck
@@ -196,45 +201,97 @@ class GameCard99:
             self.hand.append(self.deck[0])
             self.deck.pop(0)
         self.hand.sort()
+        
+    def input_random(self):
+        #
+        # Random input generators (for testing purposes)
+        #
+        a = round(random.random()*7)+1
+        b = round(random.random()*3)+1
+        return a, b
 
+    def main_loop(self):
+        #
+        # Tick
+        #        
+        while True:
+            self.hand_fill()
+            
+            status = self.end_condition()
+            if status is not None:
+                print('\n'*5)
+                return status
+            
+            self.display_table()
+            
+            user_input = self.get_user_input()  # Replace user input with reinforced NN
+            
+            if user_input is True:
+                _, score = self.play_card(self.hand_ind, self.pile_ind)
+                self.score += score
+                
+            elif user_input is False:
+                return False  # Interupted by user            
+            else:
+                pass
+            
     def play_card(self, hand_id, pile_id):
         #
+        # Returns List [Bool, Score]
         # Plays Card from hand to pile.
         # Checks for Valid move.
         # Invalid moves return None.
         # Add Turn Counter at proper moves.
         #
-        if hand_id < 0 or hand_id > 7:
-            print('Error: Invalid hand index')
-            return None
-
-        elif pile_id < 0 or pile_id > 3:
-            print('Error: Invalid pile index')
-            return None
-
-        elif pile_id == 0 or pile_id == 1:
-            if self.hand[hand_id] > self.piles[pile_id] or \
-                    self.hand[hand_id] == (self.piles[pile_id] - 10):
-                self.piles[pile_id] = self.hand[hand_id]
-                self.hand.pop(hand_id)
-
-            else:
-                print('Not valid move!')
-                return None
-
-        elif pile_id == 2 or pile_id == 3:
-            if self.hand[hand_id] < self.piles[pile_id] or \
-                    self.hand[hand_id] == (self.piles[pile_id] + 10):
-                self.piles[pile_id] = self.hand[hand_id]
-                self.hand.pop(hand_id)
-            else:
-                print('Not valid move!')
-                return None
         self.turn += 1
+        try:
+            if hand_id < 0 or hand_id > 7:
+                print('Error: Invalid hand index')
+                return [False, self.WrongMove]
+
+            elif pile_id < 0 or pile_id > 3:
+                print('Error: Invalid pile index')
+                return [False, self.WrongMove]
+
+            elif pile_id == 0 or pile_id == 1:  #Rising Piles
+                if self.hand[hand_id] > self.piles[pile_id]:
+                    self.piles[pile_id] = self.hand[hand_id]
+                    self.hand.pop(hand_id)
+                    return [True, self.GoodMove]
+
+                elif self.hand[hand_id] == (self.piles[pile_id] - 10):
+                    self.piles[pile_id] = self.hand[hand_id]
+                    self.hand.pop(hand_id)
+                    return [True, self.SkipMove]
+                else:
+                    print('Not valid move!')
+                    return [False, self.WrongMove]
+
+            elif pile_id == 2 or pile_id == 3:  #Lowering Piles
+                if self.hand[hand_id] < self.piles[pile_id]:            
+                    self.piles[pile_id] = self.hand[hand_id]
+                    self.hand.pop(hand_id)
+                    return [True, self.GoodMove]
+                
+                elif self.hand[hand_id] == (self.piles[pile_id] + 10):
+                    self.piles[pile_id] = self.hand[hand_id]
+                    self.hand.pop(hand_id)                
+                    return [True, self.SkipMove]
+                
+                else:
+                    print('Not valid move!')
+                    return [False, self.WrongMove]
+            else:
+                input('Impossible! How did u get here?!')
+        except IndexError:
+            print('Not valid move!')
+            return [False, self.WrongMove]
+        
 
     def reset(self):
         #
-        # Restart Game
+        # Restart game
+        #
         print('New Game!')
         self.__init__()
 
@@ -245,38 +302,17 @@ class GameCard99:
         self.reset()
 
         if load_save:
-            file = open('data/temp.json', 'r')
+            file = open('data/98CardsGame_SaveFile.json', 'r')
             self.deck = json.load(file)
             file.close()
 
-        result = self.tick_game()
+        result = self.main_loop()
         if result:
             print("\nYou win")
         else:
             print("\nYou lost")
 
-    def tick_game(self):
-        #
-        # Tick
-        #
-        self.turn = 0
-        while True:
 
-            self.hand_fill()            
-            self.display_table()
-            status = self.end_condition()
-
-            if status is not None:
-                return status
-            user_input = self.get_user_input()
-            # Replace user input with reinforced NN
-            
-            if user_input is True:
-                self.play_card(self.hand_ind, self.pile_ind)
-            elif user_input is False:
-                return False  # Interupted by user
-            else:
-                pass
 
 
 app = GameCard99()
