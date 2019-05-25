@@ -72,6 +72,11 @@ class GameCard99:
                 higher_card_chance.append(0)
         return[lower_card_chance, higher_card_chance]
 
+    def cards_left(self):
+        cards = np.zeros(99, dtype=int)
+        for x in self.deck:
+            cards[x-1] = 1
+            
     def check_move(self, hand_id, pile_id):
         #
         # Method Checks if move is proper
@@ -216,7 +221,7 @@ class GameCard99:
         #        
         while True:
             self.hand_fill()
-            
+            card_array = self.cards_left()
             status = self.end_condition()
             if status is not None:
                 print('\n'*5)
