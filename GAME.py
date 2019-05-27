@@ -13,12 +13,12 @@ import numpy as np
 
 import texttable as tt
 
+
 # ks = tensorflow.keras
 class GameCard99:
-    ''' Piles    1: GoingUp 2: GoingUp
-        3: GoingDown 4: GoingDown
-        Input: hand_number, pile number ; Separator is not necessary
-    '''
+    # Piles    1: GoingUp 2: GoingUp'
+    #    3: GoingDown 4: GoingDown'
+    #    Input: hand_number, pile number ; Separator is not necessary'
     
     def __init__(self):
         # self.pile_going_up = [1, 1]
@@ -40,8 +40,8 @@ class GameCard99:
         lower_card_chance = []
         higher_card_chance = []
         
-##        if len(cards) != 8:
-##            print("Cards Len =" + str(len(cards)))
+        # if len(cards) != 8:
+        #     print("Cards Len =" + str(len(cards)))
 
         if len(self.deck) > 0:
             chance = round(1 / len(self.deck) * 100, 2)
@@ -57,7 +57,7 @@ class GameCard99:
             # Not Checking piles
             if card - 10 in self.deck:
                 lower_card_chance.append(chance)
-##            elif (card - 10 in self.piles[2:4]) or card - 10 in self.hand:
+            # elif (card - 10 in self.piles[2:4]) or card - 10 in self.hand:
             elif card - 10 in self.hand:                
                 lower_card_chance.append(100)
             else:
@@ -65,7 +65,7 @@ class GameCard99:
 
             if card+10 in self.deck:
                 higher_card_chance.append(chance)
-##            elif card + 10 in self.piles[0:2] or card + 10 in self.hand:
+            # elif card + 10 in self.piles[0:2] or card + 10 in self.hand:
             elif card + 10 in self.hand:
                 higher_card_chance.append(100)
             else:
@@ -76,11 +76,12 @@ class GameCard99:
         cards = np.zeros(99, dtype=int)
         for x in self.deck:
             cards[x-1] = 1
+        return cards
             
     def check_move(self, hand_id, pile_id):
         #
         # Method Checks if move is proper
-        # Returns True if valide
+        # Returns True if valid
         # Returns False if invalid
         # Used in checking for End Conditions
         # Copied from Play Card Method
@@ -119,7 +120,7 @@ class GameCard99:
         # Showing Hand.
         # Showing Chances of next Cards.
         #
-        print('\n' + '='*5 , 'Turn'.center(8), '=', self.turn)
+        print('\n' + '='*5, 'Turn'.center(8), '=', self.turn)
         print('='*5, 'Score'.center(8), '=', self.score)
         print('Cards Left:', self.deck)
 
@@ -132,7 +133,7 @@ class GameCard99:
         [lower_chance, higher_chance] = self.calculate_chance_10(self.hand)
 
         lower_chance_row = [str(i)+'%' for i in lower_chance]  # Making text list, Adding % to number        
-        hand_with_nums = [str(i+1)+'# '+str(j) for i,j in enumerate(self.hand)]  # Numerated Hand
+        hand_with_nums = [str(i+1)+'# '+str(j) for i, j in enumerate(self.hand)]  # Numerated Hand
         higher_chance_row = [str(i)+'%' for i in higher_chance]  # Making text list, Adding % to number
         
         hand.add_row(['Lower Card Chance'] + lower_chance_row)        
@@ -142,11 +143,10 @@ class GameCard99:
 
     def end_condition(self):
         #
-        # Cheking for game over.
+        # Checking for game over.
         # Checking if any move is valid.
-        # Cheking if any cards left.
+        # Checking if any cards left.
         #
-        end_game = None
         next_move = None
         for hand_id in range(8):
             if next_move:
@@ -175,7 +175,7 @@ class GameCard99:
         #   False:  Stop or Interrupts
         #   Second object is score feedback
         #
-        self.hand_ind, self.pile_ind = -1,-1
+        self.hand_ind, self.pile_ind = -1, -1
         print('Select Card and pile:')
         game_input = input()
         
@@ -258,7 +258,7 @@ class GameCard99:
                 print('Error: Invalid pile index')
                 return [False, self.WrongMove]
 
-            elif pile_id == 0 or pile_id == 1:  #Rising Piles
+            elif pile_id == 0 or pile_id == 1:  # Rising Piles
                 if self.hand[hand_id] > self.piles[pile_id]:
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
@@ -272,7 +272,7 @@ class GameCard99:
                     print('Not valid move!')
                     return [False, self.WrongMove]
 
-            elif pile_id == 2 or pile_id == 3:  #Lowering Piles
+            elif pile_id == 2 or pile_id == 3:  # Lowering Piles
                 if self.hand[hand_id] < self.piles[pile_id]:            
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
@@ -291,7 +291,6 @@ class GameCard99:
         except IndexError:
             print('Not valid move!')
             return [False, self.WrongMove]
-        
 
     def reset(self):
         #
@@ -313,11 +312,10 @@ class GameCard99:
 
         result = self.main_loop()
         if result:
-            print("\nYou win")
+            print("\nYou win!")
         else:
-            print("\nYou lost")
-
-
+            print("\nYou lost!")
+# = = = =  End Class = = = =
 
 
 app = GameCard99()
@@ -329,4 +327,3 @@ app.start_game()
 # file.close()
 
 # data = dump(app.deck, Loader=Loader)
-
