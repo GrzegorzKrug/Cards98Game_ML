@@ -45,7 +45,7 @@ class GameCard99:
 
         if len(self.deck) > 0:
             chance = round(1 / len(self.deck) * 100, 2)
-            if round_chance is True:
+            if round_chance:
                 chance = round(chance)
             chance = chance
         else:
@@ -231,7 +231,7 @@ class GameCard99:
             
             user_input = self.get_user_input()  # Replace user input with reinforced NN
             
-            if user_input is True:
+            if user_input:
                 _, score = self.play_card(self.hand_ind, self.pile_ind)
                 self.score += score
                 
