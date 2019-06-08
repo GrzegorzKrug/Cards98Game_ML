@@ -72,11 +72,11 @@ class GameCards98:
                 higher_card_chance.append(0)
         return[lower_card_chance, higher_card_chance]
 
-    def cards_left(self):
+    def cards_left_in_array(self):
         cards = np.zeros(99, dtype=int)
         for x in self.deck:
             cards[x-1] = 1
-        return cards
+        return np.array(cards)
             
     def check_move(self, hand_id, pile_id):
         #

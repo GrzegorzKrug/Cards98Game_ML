@@ -1,15 +1,13 @@
-import tensorflow
+import tensorflow as tf
 from tensorflow import keras
 from GameCards98 import GameCards98
+
 
 class MyAgent(GameCards98):
     def __init__(self):
         GameCards98.__init__(self)
         self.old_get_user_input = self.get_user_input
         self.last_score = 0
-
-    def agent_move(self):
-        return 0.35, 0.7
 
     def denormalize_int(self, *args):
         for element in args:
@@ -26,7 +24,7 @@ class MyAgent(GameCards98):
         self.last_score = self.score
         return last_score
 
-    def get_user_input(self):
+    def agent_move(self):
         #
         # Reading numbers from input
         # Method Return:
@@ -38,12 +36,12 @@ class MyAgent(GameCards98):
         print('New agent input')
         self.hand_ind, self.pile_ind = -1, -1
         self.get_last_move_score()
-        input()
+
         move = True
 
         if move:
-            hand, pile = self.agent_move()
-            hand, pile = self.denormalize_int((hand,3),(pile, 7))
+            hand, pile = 0.1, 0.2
+            hand, pile = self.denormalize_int((hand, 3), (pile, 7))
             self.hand_ind = hand
             self.pile_ind = pile
             return True
@@ -66,7 +64,7 @@ class MyAgent(GameCards98):
         #
         while True:
             self.hand_fill()
-            card_array = self.cards_left()
+            # card_array = self.cards_left()
             status = self.end_condition()
             if status is not None:
                 print('\n' * 5)
@@ -74,8 +72,7 @@ class MyAgent(GameCards98):
 
             self.display_table()
 
-            user_input = self.get_user_input()  # Replace user input with NN
-
+            user_input = self.agent_move
             if user_input:
                 _, score = self.play_card(self.hand_ind, self.pile_ind)
                 self.score += score
@@ -89,4 +86,4 @@ class MyAgent(GameCards98):
 app1 = MyAgent()
 # app1.start_game()
 
-model = tf.keras.Model(inputs=inputs, outputs=predictions)
+# model = tf.keras.Model(inputs=inputs, outputs=predictions)
