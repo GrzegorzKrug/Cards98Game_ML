@@ -15,7 +15,7 @@ import texttable as tt
 
 
 # ks = tensorflow.keras
-class GameCard99:
+class GameCard98:
     # Piles    1: GoingUp 2: GoingUp'
     #    3: GoingDown 4: GoingDown'
     #    Input: hand_number, pile number ; Separator is not necessary'
@@ -318,7 +318,7 @@ class GameCard99:
 # = = = =  End Class = = = =
 
 
-app = GameCard99()
+app = GameCard98()
 app.start_game()
 
 # app.start_game(load_save=True)
