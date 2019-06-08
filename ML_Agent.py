@@ -20,6 +20,12 @@ class MyAgent(GameCards98):
 
             yield int(round(element[0]  * element[1]))
 
+    def get_last_move_score(self):
+        last_score = self.score - self.last_score
+        # print('Last Move Score:', last_score)
+        self.last_score = self.score
+        return last_score
+
     def get_user_input(self):
         #
         # Reading numbers from input
@@ -54,11 +60,6 @@ class MyAgent(GameCards98):
                 elif 'end' in word or 'over' in word:
                     return False
 
-    def get_last_move_score(self):
-        last_score = self.score - self.last_score
-        # print('Last Move Score:', last_score)
-        self.last_score = self.score
-        return last_score
 
 app1 = MyAgent()
 app1.old_get_user_input()
