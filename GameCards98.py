@@ -229,7 +229,7 @@ class GameCards98:
             
             self.display_table()
             
-            user_input = self.get_user_input()  # Replace user input with reinforced NN
+            user_input = self.get_user_input()  # Replace user input with NN
             
             if user_input:
                 _, score = self.play_card(self.hand_ind, self.pile_ind)
