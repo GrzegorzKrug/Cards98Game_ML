@@ -35,7 +35,7 @@ class MyAgent(GameCards98):
         #   False:  Stop or Interrupts
         #   Second object is score feedback
         #
-        print('New Fun')
+        print('New agent input')
         self.hand_ind, self.pile_ind = -1, -1
         self.get_last_move_score()
         input()
@@ -60,7 +60,33 @@ class MyAgent(GameCards98):
                 elif 'end' in word or 'over' in word:
                     return False
 
+    def main_loop(self):
+        #
+        # Agent Tick, to RE WRITE !!!
+        #
+        while True:
+            self.hand_fill()
+            card_array = self.cards_left()
+            status = self.end_condition()
+            if status is not None:
+                print('\n' * 5)
+                return status
 
+            self.display_table()
+
+            user_input = self.get_user_input()  # Replace user input with NN
+
+            if user_input:
+                _, score = self.play_card(self.hand_ind, self.pile_ind)
+                self.score += score
+
+            elif user_input is False:
+                return False  # Interupted by user
+            else:
+                pass
+
+# GameCards98.old_get_user_input = GameCards98.get_user_input
 app1 = MyAgent()
-app1.old_get_user_input()
-app1.start_game()
+# app1.start_game()
+
+model = tf.keras.Model(inputs=inputs, outputs=predictions)
