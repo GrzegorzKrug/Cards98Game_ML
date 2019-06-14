@@ -48,16 +48,12 @@ app = Grab_Teaching_Data()
 
 N = 1000 * 1
 states = app.get_game_states(N)
-for sample in states:
-    print(sample)
-with shelve.open('data', 'n') as file:
-    file['decks'] = decks
+# for sample in states:
+#     print(sample)
+
+with shelve.open('game_states', 'n') as file:
+    file['states'] = states
     # file['decks'] = file['decks'] + decks  # appending Data
 
-
-
-
-
-# file = shelve.open('data', 'r')
 # file = shelve.open('data', 'r')
 # file.close()
