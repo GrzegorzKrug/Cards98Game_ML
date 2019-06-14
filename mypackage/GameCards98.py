@@ -317,7 +317,8 @@ class GameCards98:
             print("\nYou lost!")
 # = = = =  End Class = = = =
 
-# app.start_game(load_save=True)
+# app = GameCards98()
+# app.start_game(load_save=False)
 # file = open('data/temp.json', 'w')
 # json.dump(app.deck, file)
 # file.close()

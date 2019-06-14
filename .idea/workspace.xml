@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9abaad2f-6854-4a0e-9d84-686fbd44113e" name="Default Changelist" comment="">
+    <list default="true" id="ff974307-0782-43fa-addb-f7cff82f2fba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mypackage/GameCards98.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reinforced/ML_Agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/supervised/supervised_data_grab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Game_Card_99.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameCards98.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML_Agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/temp.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,39 +19,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ML_Agent.py">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supervised/supervised_data_grab.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GameCards98.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mypackage/GameCards98.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="69" column="33" lean-forward="true" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="381">
+              <caret line="320" column="10" selection-start-line="319" selection-start-column="10" selection-end-line="320" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,16 +46,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/GAME.py" />
-        <option value="$PROJECT_DIR$/CardsGame98.py" />
-        <option value="$PROJECT_DIR$/ML_Agent.py" />
-        <option value="$PROJECT_DIR$/GameCards98.py" />
+        <option value="$PROJECT_DIR$/supervised/supervised_data_grab.py" />
+        <option value="$PROJECT_DIR$/mypackage/GameCards98.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="691" />
-    <option name="width" value="1229" />
+    <option name="x" value="442" />
+    <option name="width" value="1468" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
@@ -68,7 +61,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -76,15 +68,30 @@
               <item name="Player_98CardsGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="Player_98CardsGame" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Player_98CardsGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Player_98CardsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="mypackage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Player_98CardsGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Player_98CardsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="reinforced" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Player_98CardsGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Player_98CardsGame" type="462c0819:PsiDirectoryNode" />
+              <item name="supervised" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -98,20 +105,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ML_Agent">
-    <configuration name="GAME" type="PythonConfigurationType" factoryName="Python">
-      <module name="Game_Card_99" />
+  <component name="RunManager" selected="Python.GameCards98">
+    <configuration name="GameCards98" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Player_98CardsGame" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mypackage" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GAME.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mypackage/GameCards98.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,19 +127,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ML_Agent" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Game_Card_99" />
+    <configuration name="supervised_data_grab" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Player_98CardsGame" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/supervised" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML_Agent.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/supervised/supervised_data_grab.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -143,7 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ML_Agent" />
+        <item itemvalue="Python.GameCards98" />
+        <item itemvalue="Python.supervised_data_grab" />
       </list>
     </recent_temporary>
   </component>
@@ -152,158 +160,60 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9abaad2f-6854-4a0e-9d84-686fbd44113e" name="Default Changelist" comment="" />
-      <created>1550344499971</created>
+      <changelist id="ff974307-0782-43fa-addb-f7cff82f2fba" name="Default Changelist" comment="" />
+      <created>1560547257838</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1550344499971</updated>
+      <updated>1560547257838</updated>
     </task>
-    <task id="LOCAL-00001" summary="PEP Adjustment">
-      <created>1558980496283</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1558980496283</updated>
-    </task>
-    <task id="LOCAL-00002" summary="PEP Adjustment">
-      <created>1560002059022</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1560002059022</updated>
-    </task>
-    <task id="LOCAL-00003" summary="ML update">
-      <created>1560002231898</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1560002231898</updated>
-    </task>
-    <task id="LOCAL-00004" summary="idea">
-      <created>1560002250644</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1560002250644</updated>
-    </task>
-    <task id="LOCAL-00005" summary="rename">
-      <created>1560002272409</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1560002272409</updated>
-    </task>
-    <task id="LOCAL-00006" summary="update">
-      <created>1560005443328</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1560005443328</updated>
-    </task>
-    <task id="LOCAL-00007" summary="update">
-      <created>1560007993086</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1560007993086</updated>
-    </task>
-    <task id="LOCAL-00008" summary="update">
-      <created>1560008815310</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1560008815310</updated>
-    </task>
-    <task id="LOCAL-00009" summary="update">
-      <created>1560026188527</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1560026188527</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="691" y="0" width="1229" height="1050" extended-state="0" />
+    <frame x="442" y="0" width="1468" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16509837" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22875817" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32900432" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32900432" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="R Packages" />
+      <window_info anchor="right" id="R Graphics" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="PEP Adjustment" />
-    <MESSAGE value="ML update" />
-    <MESSAGE value="idea" />
-    <MESSAGE value="rename" />
-    <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+    <entry file="file://$PROJECT_DIR$/reinforced/ML_Agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="1740" selection-start-line="1740" selection-end-line="1740" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GAME.py" />
-    <entry file="file://$PROJECT_DIR$/CardsGame98.py" />
-    <entry file="file://$PROJECT_DIR$/GameCards98.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="69" column="33" lean-forward="true" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+        <state>
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML_Agent.py">
+    <entry file="file://$PROJECT_DIR$/supervised/supervised_data_grab.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mypackage/GameCards98.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="320" column="10" selection-start-line="319" selection-start-column="10" selection-end-line="320" selection-end-column="10" />
         </state>
       </provider>
     </entry>
