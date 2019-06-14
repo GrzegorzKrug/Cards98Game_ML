@@ -73,9 +73,9 @@ class GameCards98:
         return[lower_card_chance, higher_card_chance]
 
     def cards_left_in_array(self):
-        cards = np.zeros(99, dtype=int)
+        cards = np.zeros(98, dtype=int)
         for x in self.deck:
-            cards[x-1] = 1
+            cards[x-2] = 1  # Card '2' is first on list, index 0
         return np.array(cards)
             
     def check_move(self, hand_id, pile_id):
@@ -296,7 +296,7 @@ class GameCards98:
         #
         # Restart game
         #
-        print('New Game!')
+        # print('New Game!')
         self.__init__()
 
     def start_game(self, load_save=False):
