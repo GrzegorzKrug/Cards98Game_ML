@@ -221,7 +221,7 @@ class GameCards98:
         #        
         while True:
             self.hand_fill()
-            card_array = self.cards_left()
+            card_array = self.cards_left_in_array()
             status = self.end_condition()
             if status is not None:
                 print('\n'*5)
