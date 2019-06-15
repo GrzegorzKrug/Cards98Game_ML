@@ -7,8 +7,9 @@ sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('MyNN') as file:
+with shelve.open('MyNN2') as file:
     nn1 = file['supervised1']
+    file['comment'] = 'Functions is bad, multiple moves from same samles'
 
 # test_X = [[39, 53, 96, 13, 4, 90, 58, 72, 1, 4, 99, 100]]
 # print(nn1.predict(test_X))

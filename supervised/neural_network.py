@@ -7,7 +7,7 @@ input('Are you sure you want to retrain your network? ...')
 print('Ok, starting...')
 data = Grab_Teaching_Data()
 k = 100
-samples = data.generate_random_states(k, score_min=90)
+samples = data.generate_random_states(k, score_min=60)
 print('Got {0} samples'.format(len(samples)))
 print('Average good moves from 1 sample: {}'.format(str(len(samples)/k/1000)))
 
@@ -17,7 +17,7 @@ X = []
 Y = []
 
 for sample in samples:
-    new_sample = np.concatenate((sample['hand'], sample['piles']))
+    new_sample = np.concatenate((sample['hand'], sample['piles'], [sample['score']]))
     # new_score = []
     # for key, value in sample.items():
     #     if key == 'deck' or key == :
@@ -34,8 +34,9 @@ for sample in samples:
 print('Learning....')
 nn1 = sklearn.neural_network.MLPRegressor(max_iter=1000)
 nn1.fit(X, Y)
-with shelve.open('MyNN', 'n') as file:
-    file['supervised1'] = nn1
+with shelve.open('MyNN2', 'n') as file:
+    file['supervised'] = nn1
+    file['comment'] = 'Adding score to model'
 
 # test_X = [[78, 37, 11, 48, 32, 27, 62, 90, 1, 1, 100, 100]]
 # test_X = np.array(test_X).reshape(-1,1)
