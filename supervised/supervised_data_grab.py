@@ -138,12 +138,10 @@ class Grab_Teaching_Data():
             return [False, self.WrongMove]
 
 
-
-app = Grab_Teaching_Data()
-
-N = 10  # N=10 Takes up to 10s, N=100 -> 18s
-samples = app.generate_random_states(N)
-print(len(samples))
+# app = Grab_Teaching_Data()
+#
+# N = 10  # N=10 Takes up to 10s, N=100 -> 18s
+# samples = app.generate_random_states(N)
 
 # for sample in samples:
 #     print(sample['score'])
