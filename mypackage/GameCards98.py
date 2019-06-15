@@ -232,7 +232,7 @@ class GameCards98:
             user_input = self.get_user_input()  # Replace user input with NN
             
             if user_input:
-                _, score = self.play_card(self.hand_ind, self.pile_ind)
+                score = self.play_card(self.hand_ind, self.pile_ind)
                 self.score += score
                 
             elif user_input is False:
@@ -252,45 +252,54 @@ class GameCards98:
         try:
             if hand_id < 0 or hand_id > 7:
                 print('Error: Invalid hand index')
-                return [False, self.WrongMove]
+                self.score += self.WrongMove
+                return False
 
             elif pile_id < 0 or pile_id > 3:
                 print('Error: Invalid pile index')
-                return [False, self.WrongMove]
+                self.score += self.WrongMove
+                return False
 
             elif pile_id == 0 or pile_id == 1:  # Rising Piles
                 if self.hand[hand_id] > self.piles[pile_id]:
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
-                    return [True, self.GoodMove]
+                    self.score += self.GoodMove
+                    return True
 
                 elif self.hand[hand_id] == (self.piles[pile_id] - 10):
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
-                    return [True, self.SkipMove]
+                    self.score += self.SkipMove
+                    return True
                 else:
-                    print('Not valid move!')
-                    return [False, self.WrongMove]
+                    # print('Not valid move!')
+                    self.score += self.WrongMove
+                    return False
 
             elif pile_id == 2 or pile_id == 3:  # Lowering Piles
                 if self.hand[hand_id] < self.piles[pile_id]:            
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
-                    return [True, self.GoodMove]
+                    self.score += self.GoodMove
+                    return True
                 
                 elif self.hand[hand_id] == (self.piles[pile_id] + 10):
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)                
-                    return [True, self.SkipMove]
+                    self.score += self.SkipMove
+                    return True
                 
                 else:
-                    print('Not valid move!')
-                    return [False, self.WrongMove]
+                    # print('Not valid move!')
+                    self.score += self.WrongMove
+                    return False
             else:
                 input('Impossible! How did u get here?!')
         except IndexError:
             print('Not valid move!')
-            return [False, self.WrongMove]
+            self.score += self.WrongMove
+            return False
 
     def reset(self):
         #

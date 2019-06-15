@@ -26,7 +26,7 @@ class Grab_Teaching_Data():
         self.SkipMove = 100
 
     @time_decorator
-    def generate_random_states(self, N=None):
+    def generate_random_states(self, N=None, score_min = 1):
         # Generates random states of the game by randmizing cards in deck, hand and piles
         # returns list of dicts
         # [{deck, hand, piles, move, score},
@@ -59,8 +59,9 @@ class Grab_Teaching_Data():
 
             if type(result_sample) is list:
                 for element in result_sample:
-                    self.samples.append(element)
-            else:
+                    if element['score'] >= score_min:
+                        self.samples.append(element)
+            elif result_sample['score'] >= score_min:
                 self.samples.append(result_sample)
 
         return  self.samples
