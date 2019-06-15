@@ -13,7 +13,7 @@ sys.path.append(mypackage_path)
 from GameCards98 import GameCards98
 
 with shelve.open('MyNN2') as file:
-    nn1 = file['supervised1']
+    nn1 = file['supervised']
     file['comment'] = 'Functions is bad, multiple moves from same samles'
 
 # test_X = [[39, 53, 96, 13, 4, 90, 58, 72, 1, 4, 99, 100]]
@@ -28,7 +28,7 @@ score = 0
 while True:
     game.hand_fill()
     # card_array = game.cards_left_in_array()
-    # game.display_table()
+    game.display_table()
 
     hand = game.hand
     piles = game.piles

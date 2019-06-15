@@ -6,7 +6,7 @@ from supervised_data_grab import *
 input('Are you sure you want to retrain your network? ...')
 print('Ok, starting...')
 data = Grab_Teaching_Data()
-k = 100
+k = 20
 samples = data.generate_random_states(k, score_min=60)
 print('Got {0} samples'.format(len(samples)))
 print('Average good moves from 1 sample: {}'.format(str(len(samples)/k/1000)))
