@@ -33,12 +33,13 @@ class Grab_Teaching_Data():
         # list size = N
 
         if N is None:
-            print("changed to, N = ",self.N)
-            N = self.N
+            N = int(self.N)
+            print("changed to, N = ", N)
+        end = int(N * 1000 + 1)
 
-        # self.states = []
+
         self.samples = []
-        for i in range(1, N * 1000 + 1):
+        for i in range(1, end):
             # if (((i ) % 100) == 0):
             #     print("N :" + "{0}k".format( i/1000).rjust(8))  # boring waiting :D
 
