@@ -2,6 +2,11 @@ import shelve
 import numpy as np
 import os, sys
 
+# LAST TRAIN
+# Time elapsed: 21.650238513946533
+# Got 1071477 samples
+# Average good moves from 1 sample: 10.71477
+
 mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append(mypackage_path)
 
@@ -28,7 +33,7 @@ while True:
     hand = game.hand
     piles = game.piles
 
-    table = [np.concatenate((hand, piles))]
+    table = [np.concatenate((hand, piles, [100]))]  # searching score 100
     move = nn1.predict(table)
 
     hand, pile = int(round(move[0][0])), int(round(move[0][1]))
