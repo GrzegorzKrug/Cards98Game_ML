@@ -7,12 +7,25 @@ mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append( mypackage_path )
 from GameCards98 import GameCards98
 
+def time_decorator(some_func):
+    def check_time(*args, **kwargs):
+        time0 = time()
+        output = some_func(*args, **kwargs)
+        print('Excecuted  "{0}()"'.format(some_func.__name__))
+        print('Time elapsed: {0}'.format(time() - time0))
+        return output
+    return  check_time
+
 class Grab_Teaching_Data():
     def __init__(self):
-        self.N = 100000
+        self.N = 100
         self.states = []
-        pass
 
+        # score_factor = 10
+        self.WrongMove = -1
+        self.SkipMove = 100
+
+    @time_decorator
     def generate_random_states(self, N=None):
         # Generates random states of the game by randmizing cards in deck, hand and piles
         # returns list of dicts
@@ -23,9 +36,11 @@ class Grab_Teaching_Data():
             print("changed to, N = ",self.N)
             N = self.N
 
-        self.states = []
-        for _ in range(N):
-            print("N[k]:", _/1000)  # boring waiting :D
+        # self.states = []
+        self.samples = []
+        for i in range(1, N * 1000 + 1):
+            # if (((i ) % 100) == 0):
+            #     print("N :" + "{0}k".format( i/1000).rjust(8))  # boring waiting :D
 
             deck = np.arange(2, 100)
             np.random.shuffle(deck)
@@ -39,38 +54,102 @@ class Grab_Teaching_Data():
             random_remove = round(np.random.rand() * 85)  # 2:99 -> 98 cards, 98-8-4=86 -> index from 0=85
             deck = deck[0:random_remove]
 
-            result_sample = self.choose_card(deck, hand, piles)
+            result_sample = self.attach_score_to_state(deck, hand, piles)
 
             if type(result_sample) is list:
                 for element in result_sample:
-                    self.states.append(element)
+                    self.samples.append(element)
             else:
-                self.states.append(result_sample)
+                self.samples.append(result_sample)
 
-        return  self.states
+        return  self.samples
 
-    def choose_card(self, deck, hand, piles):
-        this_dict = {'deck':deck, 'hand': hand, 'piles':piles, 'score':1, 'move':(0,0)}
-        multi_dict = [this_dict, this_dict]
-        return  multi_dict
+    def attach_score_to_state(self, deck, hand, piles):
 
+        possible_moves = []
+
+        for h,this_hand in enumerate(hand):
+            for p, this_pile in enumerate(piles):
+                move = (h, p)
+                score = self.check_if_move_is_valid(deck, hand, piles, move)
+                score = score[1]
+                if score < 0:
+                    continue
+                else:
+                    this_dict = {'deck': deck, 'hand': hand, 'piles': piles, 'score': score, 'move': (h, p)}
+                    possible_moves.append(this_dict)
+
+
+
+        return  possible_moves
+
+    def check_if_move_is_valid(self, deck, hand, piles, move):
+        #
+        # Returns List [Bool, Score]
+        # Plays Card from hand to pile.
+        # Checks for Valid move.
+        # Invalid moves return None.
+        # Add Turn Counter at proper moves.
+        #
+
+        hand_id, pile_id = move
+        score_factor = 100 - abs(hand[hand_id] - piles[pile_id])
+        try:
+            if hand_id < 0 or hand_id > 7:
+                print('Error: Invalid hand index')
+                return [False, self.WrongMove]
+
+            elif pile_id < 0 or pile_id > 3:
+                print('Error: Invalid pile index')
+                return [False, self.WrongMove]
+
+            elif pile_id == 0 or pile_id == 1:  # Rising Piles
+                if hand[hand_id] > piles[pile_id]:
+                    # piles[pile_id] = hand[hand_id]
+                    # hand.pop(hand_id)
+                    return [True, score_factor]
+
+                elif hand[hand_id] == (piles[pile_id] - 10):
+                    # piles[pile_id] = hand[hand_id]
+                    # hand.pop(hand_id)
+                    return [True, self.SkipMove]
+                else:
+                    # print('Not valid move!')
+                    return [False, self.WrongMove]
+
+            elif pile_id == 2 or pile_id == 3:  # Lowering Piles
+                if hand[hand_id] < piles[pile_id]:
+                    # piles[pile_id] = hand[hand_id]
+                    # hand.pop(hand_id)
+                    return [True, score_factor]
+
+                elif hand[hand_id] == (piles[pile_id] + 10):
+                    # piles[pile_id] = hand[hand_id]
+                    # hand.pop(hand_id)
+                    return [True, self.SkipMove]
+
+                else:
+                    # print('Not valid move!')
+                    return [False, self.WrongMove]
+            else:
+                input('Impossible! How did u get here?!')
+        except IndexError:
+            print('IndexError: Why?!')
+            return [False, self.WrongMove]
 
 
 
 app = Grab_Teaching_Data()
 
-N = 1000 * 1000
-states = app.generate_random_states(N)
-# for sample in states:
-#     print(sample)
+N = 10  # N=10 Takes up to 10s, N=100 -> 18s
+samples = app.generate_random_states(N)
+print(len(samples))
 
-os.makedirs(os.path.abspath(os.path.join('data')), exist_ok=True)
-time0 = time()
-with shelve.open('data\learning', 'n') as file:
-    # file.clear()
-    file['learning'] = states
-    # file['decks'] = file['decks'] + decks  # appending Data
+# for sample in samples:
+#     print(sample['score'])
 
-print(time() - time0)
-# file = shelve.open('data', 'r')
-# file.close()
+
+# os.makedirs(os.path.abspath(os.path.join('data')), exist_ok=True)
+# with shelve.open('data\learning', 'n') as file:
+#     file['learning'] = states
+#     # file['decks'] = file['decks'] + decks  # appending Data
