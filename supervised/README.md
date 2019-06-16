@@ -4,7 +4,8 @@ This is Supervised approach.
 Currently model is ovetrained, and repeat moves. will fix this.
 
 
-# I do know how to beat this game, so this neural network will not beat it.
+# I do know how to beat this game
+in result neural network will also not beat it.
 
 I am learning machine to play this game in my way.
 
