@@ -1,13 +1,15 @@
 import numpy as np
-import sklearn
+import sklearn.neural_network
 import shelve
 from supervised_data_grab import *
 
 input('Are you sure you want to retrain your network? ...')
 print('Ok, starting...')
 data = Grab_Teaching_Data()
-k = 20
-samples = data.generate_random_states(k, score_min=60)
+k = 300
+score_min = 80
+
+samples = data.generate_random_states(k, score_min=score_min)
 print('Got {0} samples'.format(len(samples)))
 print('Average good moves from 1 sample: {}'.format(str(len(samples)/k/1000)))
 
@@ -29,14 +31,14 @@ for sample in samples:
 
     X.append(new_sample)
     Y.append( sample['move'])
-# print(X[0])
-# print(Y[0])
+
 print('Learning....')
 nn1 = sklearn.neural_network.MLPRegressor(max_iter=1000)
 nn1.fit(X, Y)
-with shelve.open('MyNN2', 'n') as file:
+
+with shelve.open('MyNN_one_move_per_sample', 'n') as file:
     file['supervised'] = nn1
-    file['comment'] = 'Adding score to model'
+    file['comment'] = 'One_move_per_sample'
 
 # test_X = [[78, 37, 11, 48, 32, 27, 62, 90, 1, 1, 100, 100]]
 # test_X = np.array(test_X).reshape(-1,1)

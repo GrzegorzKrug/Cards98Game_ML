@@ -12,9 +12,9 @@ sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('MyNN2') as file:
+with shelve.open('MyNN_one_move_per_sample') as file:
     nn1 = file['supervised']
-    file['comment'] = 'Functions is bad, multiple moves from same samles'
+    file['comment'] = 'One_move_per_sample'
 
 # test_X = [[39, 53, 96, 13, 4, 90, 58, 72, 1, 4, 99, 100]]
 # print(nn1.predict(test_X))
@@ -28,7 +28,7 @@ score = 0
 while True:
     game.hand_fill()
     # card_array = game.cards_left_in_array()
-    game.display_table()
+    # game.display_table()
 
     hand = game.hand
     piles = game.piles
@@ -40,9 +40,11 @@ while True:
     # print(hand)
     # print(pile)
 
-    print('My move', hand + 1, pile + 1)
+
+    score_pre = game.score
     game.play_card(hand, pile)
-    print('Score =', game.score)
+    # print('My move', hand + 1, pile + 1)
+    print('My move', hand + 1, pile + 1, '\t', 'Score gained=', game.score - score_pre)
 
     # input('next...')
     status = game.end_condition()

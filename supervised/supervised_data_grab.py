@@ -5,7 +5,7 @@ from time import  time
 
 mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append( mypackage_path )
-from GameCards98 import GameCards98
+# from GameCards98 import GameCards98
 
 def time_decorator(some_func):
     def check_time(*args, **kwargs):
@@ -24,6 +24,9 @@ class Grab_Teaching_Data():
         # score_factor = 10
         self.WrongMove = -1
         self.SkipMove = 100
+
+    def get_dict_score(self, this_dict):
+        return this_dict['score']
 
     @time_decorator
     def generate_random_states(self, N=None, score_min = 1):
@@ -55,19 +58,14 @@ class Grab_Teaching_Data():
             random_remove = round(np.random.rand() * 85)  # 2:99 -> 98 cards, 98-8-4=86 -> index from 0=85
             deck = deck[0:random_remove]
 
-            result_sample = self.attach_score_to_state(deck, hand, piles)
-
-            if type(result_sample) is list:
-                for element in result_sample:
-                    if element['score'] >= score_min:
-                        self.samples.append(element)
-            elif result_sample['score'] >= score_min:
-                self.samples.append(result_sample)
+            result = self.attach_score_to_state(deck, hand, piles, score_min)
+            if result is None:
+                continue
+            self.samples += result
 
         return  self.samples
 
-    def attach_score_to_state(self, deck, hand, piles):
-
+    def attach_score_to_state(self, deck, hand, piles, score_min=1, best_move_only=True):
         possible_moves = []
 
         for h,this_hand in enumerate(hand):
@@ -81,9 +79,24 @@ class Grab_Teaching_Data():
                     this_dict = {'deck': deck, 'hand': hand, 'piles': piles, 'score': score, 'move': (h, p)}
                     possible_moves.append(this_dict)
 
+        if best_move_only and len(possible_moves) > 0:
+            best_move = max(possible_moves, key=self.get_dict_score)
 
+            if best_move['score'] >= score_min:
+                return [best_move]
+            else:
+                return
 
-        return  possible_moves
+        elif len(possible_moves) > 0:
+            good_moves = [move for move in possible_moves if move['score'] >= score_min]
+            return good_moves
+
+        # elif type(possible_moves) is dict and possible_moves['score'] >= score_min:
+        #     print("it is dict")
+            # return [possible_moves]
+
+        else:
+            return
 
     def check_if_move_is_valid(self, deck, hand, piles, move):
         #
