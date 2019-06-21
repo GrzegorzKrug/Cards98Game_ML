@@ -26,6 +26,7 @@ class GameCards98:
         self.piles = [1, 1, 100, 100]
         self.deck = random.sample(range(2, 100), 98)  # 98)
         self.hand = []
+        self.move_count = 0
         self.turn = 0
         self.score = 0
         'NN Values for feedback'
@@ -120,7 +121,7 @@ class GameCards98:
         # Showing Hand.
         # Showing Chances of next Cards.
         #
-        print('\n' + '='*5, 'Turn'.center(8), '=', self.turn)
+        print('\n' + '='*5, 'Turn'.center(8), '=', self.move_count)
         print('='*5, 'Score'.center(8), '=', self.score)
         print('Cards Left:', self.deck)
 
@@ -248,7 +249,7 @@ class GameCards98:
         # Invalid moves return None.
         # Add Turn Counter at proper moves.
         #
-        self.turn += 1
+        self.move_count += 1
         try:
             if hand_id < 0 or hand_id > 7:
                 print('Error: Invalid hand index')
@@ -265,12 +266,14 @@ class GameCards98:
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
                     self.score += self.GoodMove
+                    self.turn += 1
                     return True
 
                 elif self.hand[hand_id] == (self.piles[pile_id] - 10):
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
                     self.score += self.SkipMove
+                    self.turn += 1
                     return True
                 else:
                     # print('Not valid move!')
@@ -282,6 +285,7 @@ class GameCards98:
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
                     self.score += self.GoodMove
+                    self.turn += 1
                     return True
                 
                 elif self.hand[hand_id] == (self.piles[pile_id] + 10):
