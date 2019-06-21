@@ -35,7 +35,7 @@ for sample in samples:
 # X.reshape(1, -1)
 
 print('Learning....')
-nn1 = sklearn.neural_network.MLPRegressor((100, 4*8), max_iter=300)
+nn1 = sklearn.neural_network.MLPRegressor((150, 150 * 4 * 8), max_iter=500)
 # nn1 = sklearn.multioutput.MultiOutputClassifier()
 time_before = time()
 nn1.fit(X, Y)

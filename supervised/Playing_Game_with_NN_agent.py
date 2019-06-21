@@ -7,12 +7,21 @@ import os, sys
 # Got 1071477 samples
 # Average good moves from 1 sample: 10.71477
 
+def convert_list_to_matrix(this_list):
+    if type(this_list) == int:
+        this_list = [this_list]
+
+    matrix = np.zeros(98)
+    for item in this_list:
+        matrix[item - 2] = 1
+    return matrix
+
 mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('NN\\' + 'NN_5_with_turn_indicator') as file:
+with shelve.open('NN\\' + 'NN_CLF_1') as file:
     nn1 = file['supervised']
     # file['comment'] = 'One_move_per_sample'
 
@@ -23,7 +32,7 @@ with shelve.open('NN\\' + 'NN_5_with_turn_indicator') as file:
 game = GameCards98()
 game.reset()
 game.hand_fill()
-game.display_table()
+# game.display_table()
 score = 0
 while True:
     game.hand_fill()
@@ -33,7 +42,10 @@ while True:
     hand = game.hand
     piles = game.piles
     turn = game.turn
-    table = [np.concatenate((hand, piles, [100]))]  # searching score 100
+    hand_matrix = convert_list_to_matrix(hand)
+    # deck_matrix = convert_list_to_matrix(deck)
+
+    table = [np.concatenate((hand_matrix, piles, [100]))]  # searching score 100
     move = nn1.predict(table)
 
     hand, pile = int(round(move[0][0])), int(round(move[0][1]))

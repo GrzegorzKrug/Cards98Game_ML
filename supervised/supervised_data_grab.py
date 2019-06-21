@@ -28,6 +28,15 @@ class Grab_Teaching_Data():
     def get_dict_score(self, this_dict):
         return this_dict['score']
 
+    def convert_list_to_matrix(self, this_list):
+        if this_list is None:
+            this_list = []
+        matrix = np.zeros(98)
+
+        for item in this_list:
+            matrix[item - 2] = 1
+        return  matrix
+
     @time_decorator
     def generate_random_states(self, N=None, score_min = 1):
         # Generates random states of the game by randmizing cards in deck, hand and piles
@@ -47,7 +56,7 @@ class Grab_Teaching_Data():
 
         self.generate_random_states_method(end_begin_phase, phase='begin', score_min=score_min)
         self.generate_random_states_method(end_main_phase, phase='midgame', score_min=score_min)
-        # self.generate_random_states_method(end__end_phase, phase='endgame', score_min=score_min)  # Hand is changing shape
+        self.generate_random_states_method(end__end_phase, phase='endgame', score_min=score_min)  # Hand is changing shape
 
         return  self.samples
 
@@ -89,7 +98,6 @@ class Grab_Teaching_Data():
                 continue
             self.samples += result
 
-
     def attach_score_to_state(self, deck, hand, piles, score_min=1, best_move_only=True):
         possible_moves = []
         if deck is None:
@@ -105,7 +113,11 @@ class Grab_Teaching_Data():
                 if score < 0:
                     continue
                 else:
-                    this_dict = {'deck': deck, 'hand': hand, 'piles': piles, 'score': score,
+                    # deck_matrix = self.convert_list_to_matrix(deck)
+                    hand_matrix = self.convert_list_to_matrix(hand)
+                    # piles_matrix = self.convert_list_to_matrix(piles)
+
+                    this_dict = {'deck': deck, 'hand': hand_matrix, 'piles': piles, 'score': score,
                                  'move': (h, p), 'turn':turn}
                     possible_moves.append(this_dict)
 
