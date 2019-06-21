@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff974307-0782-43fa-addb-f7cff82f2fba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervised/data/Comment.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/supervised/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised/neural_network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supervised/supervised_data_grab.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised/supervised_data_grab.py" afterDir="false" />
     </list>
@@ -17,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/supervised/supervised_data_grab.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="227">
+              <caret line="49" column="124" selection-start-line="49" selection-start-column="124" selection-end-line="49" selection-end-column="124" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -29,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/supervised/neural_network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="119">
+              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -44,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+            <state relative-caret-position="68">
+              <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -88,10 +85,10 @@
       <list>
         <option value="$PROJECT_DIR$/supervised/regression.py" />
         <option value="$PROJECT_DIR$/supervised/testing.py" />
-        <option value="$PROJECT_DIR$/supervised/supervised_data_grab.py" />
         <option value="$PROJECT_DIR$/mypackage/GameCards98.py" />
         <option value="$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py" />
         <option value="$PROJECT_DIR$/supervised/neural_network.py" />
+        <option value="$PROJECT_DIR$/supervised/supervised_data_grab.py" />
       </list>
     </option>
   </component>
@@ -154,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Playing_Game_with_NN_agent">
+  <component name="RunManager" selected="Python.neural_network">
     <configuration name="Playing_Game_with_NN_agent" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Player_98CardsGame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -262,8 +259,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Playing_Game_with_NN_agent" />
         <item itemvalue="Python.neural_network" />
+        <item itemvalue="Python.Playing_Game_with_NN_agent" />
         <item itemvalue="Python.supervised_data_grab" />
         <item itemvalue="Python.testing" />
         <item itemvalue="Python.regression" />
@@ -358,12 +355,12 @@
     <frame x="323" y="0" width="1597" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16070266" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16070266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38562092" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38562092" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978212" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -443,16 +440,6 @@
     <entry file="file://$PROJECT_DIR$/../../PycharmProjects/return_max_by_key.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/supervised/supervised_data_grab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mypackage/GameCards98.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4862">
@@ -465,17 +452,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        <state relative-caret-position="68">
+          <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supervised/neural_network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="119">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supervised/supervised_data_grab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="49" column="124" selection-start-line="49" selection-start-column="124" selection-end-line="49" selection-end-column="124" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

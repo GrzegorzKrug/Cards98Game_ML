@@ -12,7 +12,7 @@ sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('NN\\' + 'MyNN_with_turn_indicator') as file:
+with shelve.open('NN\\' + 'NN_5_with_turn_indicator') as file:
     nn1 = file['supervised']
     # file['comment'] = 'One_move_per_sample'
 

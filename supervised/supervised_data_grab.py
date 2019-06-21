@@ -38,36 +38,64 @@ class Grab_Teaching_Data():
         if N is None:
             N = int(self.N)
             print("changed to, N = ", N)
-        end = int(N * 1000 + 1)
 
+        end_begin_phase = int(N * 1000 * 0.1)
+        end_main_phase = int(N * 1000 * 0.8)
+        end__end_phase = int(N * 1000 * 0.1)
 
         self.samples = []
-        for i in range(1, end):
-            # if (((i ) % 100) == 0):
-            #     print("N :" + "{0}k".format( i/1000).rjust(8))  # boring waiting :D
 
+        self.generate_random_states_method(end_begin_phase, phase='begin', score_min=score_min)
+        self.generate_random_states_method(end_main_phase, phase='midgame', score_min=score_min)
+        # self.generate_random_states_method(end__end_phase, phase='endgame', score_min=score_min)  # Hand is changing shape
+
+        return  self.samples
+
+    def generate_random_states_method(self, end, phase='midgame', score_min=1):
+        for i in range(end):
             deck = np.arange(2, 100)
             np.random.shuffle(deck)
+            piles = [1, 1, 100, 100]
 
-            piles = deck[0:4]  # placing 4 random cards on stacks
-            deck = deck[4:]
+            if phase == 'begin':
+                # piles = [1, 1, 100, 100]
+                hand = deck[0:8]  # taking 8 random cards to hand
+                deck = deck[8:]
 
-            hand = deck[0:8]  # taking 8 random cards to hand
-            deck = deck[8:]
+            elif phase == 'midgame':
+                piles = deck[0:4]  # placing 4 random cards on stacks
+                deck = deck[4:]
 
-            random_remove = round(np.random.rand() * 85)  # 2:99 -> 98 cards, 98-8-4=86 -> index from 0=85
-            deck = deck[0:random_remove]
+                hand = deck[0:8]  # taking 8 random cards to hand
+                deck = deck[8:]
+
+                random_remove = int(np.random.rand() * 86)  # Cards 2:99 -> 98-8-4=86 -> index from -> 85, int() -> 86
+                deck = deck[0:random_remove]  # Remove random cards from deck
+
+            elif phase == 'endgame':
+                piles = deck[0:4]  # placing 4 random cards on stacks
+                deck = deck[4:]
+
+                # random_remove = int(np.random.rand() * (8))  # 2:99 -> 98 cards, 98-8-4=86 -> index from 0=85
+                hand = deck[0:int(np.random.rand() * (7) + 1)]  # taking 8 random cards to hand
+
+                if len(hand) <= 0:
+                    continue
+                deck = None
+
 
             result = self.attach_score_to_state(deck, hand, piles, score_min)
             if result is None:
                 continue
             self.samples += result
 
-        return  self.samples
 
     def attach_score_to_state(self, deck, hand, piles, score_min=1, best_move_only=True):
         possible_moves = []
-        turn = 90 - len(deck)
+        if deck is None:
+            turn = 90 + 8 - len(hand)
+        else:
+            turn = 90 - len(deck)
         for h,this_hand in enumerate(hand):
             for p, this_pile in enumerate(piles):
                 move = (h, p)
@@ -113,11 +141,11 @@ class Grab_Teaching_Data():
         score_factor = 100 - abs(hand[hand_id] - piles[pile_id])
         try:
             if hand_id < 0 or hand_id > 7:
-                print('Error: Invalid hand index')
+                print('Error SDG: Invalid hand index')
                 return [False, self.WrongMove]
 
             elif pile_id < 0 or pile_id > 3:
-                print('Error: Invalid pile index')
+                print('Error SDG: Invalid pile index')
                 return [False, self.WrongMove]
 
             elif pile_id == 0 or pile_id == 1:  # Rising Piles

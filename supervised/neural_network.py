@@ -1,5 +1,6 @@
 import numpy as np
 import sklearn.neural_network
+# import sklearn.multioutput
 import shelve
 from supervised_data_grab import *
 
@@ -7,7 +8,7 @@ input('Are you sure you want to retrain your network? ...')
 print('Ok, collecting samples...')
 
 data = Grab_Teaching_Data()
-samples_count = 100  # [k]
+samples_count = 10  # [k]
 score_min = 75
 samples = data.generate_random_states(samples_count, score_min=score_min)
 print('Got {0} samples'.format(len(samples)))
@@ -30,14 +31,18 @@ for sample in samples:
     X.append(new_sample)
     Y.append( sample['move'])
 
+# X = np.array(X)
+# X.reshape(1, -1)
+
 print('Learning....')
-nn1 = sklearn.neural_network.MLPRegressor((300, 50), max_iter=500)
+nn1 = sklearn.neural_network.MLPRegressor((100, 4*8), max_iter=300)
+# nn1 = sklearn.multioutput.MultiOutputClassifier()
 time_before = time()
 nn1.fit(X, Y)
 print('Time elapsed:', time() - time_before)
 
 print('Saving to file....')
-with shelve.open('NN\\' + 'MyNN_with_turn_indicator', 'n') as file:
+with shelve.open('NN\\' + 'NN_CLF_1', 'n') as file:
     file['supervised'] = nn1
     file['comment'] = 'One_move_per_sample\n' \
                       + 'Turn indicator '
