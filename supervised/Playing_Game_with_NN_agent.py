@@ -12,9 +12,9 @@ sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('MyNN_one_move_per_sample') as file:
+with shelve.open('NN\\' + 'MyNN_with_turn_indicator') as file:
     nn1 = file['supervised']
-    file['comment'] = 'One_move_per_sample'
+    # file['comment'] = 'One_move_per_sample'
 
 # test_X = [[39, 53, 96, 13, 4, 90, 58, 72, 1, 4, 99, 100]]
 # print(nn1.predict(test_X))
@@ -32,7 +32,7 @@ while True:
 
     hand = game.hand
     piles = game.piles
-
+    turn = game.turn
     table = [np.concatenate((hand, piles, [100]))]  # searching score 100
     move = nn1.predict(table)
 

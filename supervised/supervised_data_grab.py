@@ -11,7 +11,7 @@ def time_decorator(some_func):
     def check_time(*args, **kwargs):
         time0 = time()
         output = some_func(*args, **kwargs)
-        print('Excecuted  "{0}()"'.format(some_func.__name__))
+        # print('Excecuted  "{0}()"'.format(some_func.__name__))
         print('Time elapsed: {0}'.format(time() - time0))
         return output
     return  check_time
@@ -67,16 +67,18 @@ class Grab_Teaching_Data():
 
     def attach_score_to_state(self, deck, hand, piles, score_min=1, best_move_only=True):
         possible_moves = []
-
+        turn = 90 - len(deck)
         for h,this_hand in enumerate(hand):
             for p, this_pile in enumerate(piles):
                 move = (h, p)
                 score = self.check_if_move_is_valid(deck, hand, piles, move)
                 score = score[1]
+
                 if score < 0:
                     continue
                 else:
-                    this_dict = {'deck': deck, 'hand': hand, 'piles': piles, 'score': score, 'move': (h, p)}
+                    this_dict = {'deck': deck, 'hand': hand, 'piles': piles, 'score': score,
+                                 'move': (h, p), 'turn':turn}
                     possible_moves.append(this_dict)
 
         if best_move_only and len(possible_moves) > 0:
