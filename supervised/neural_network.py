@@ -8,7 +8,7 @@ input('Are you sure you want to retrain your network? ...')
 print('Ok, collecting samples...')
 
 data = Grab_Teaching_Data()
-samples_count = 10  # [k]
+samples_count = 100  # [k]
 score_min = 75
 samples = data.generate_random_states(samples_count, score_min=score_min)
 print('Got {0} samples'.format(len(samples)))
@@ -35,18 +35,27 @@ for sample in samples:
 # X.reshape(1, -1)
 
 print('Learning....')
-nn1 = sklearn.neural_network.MLPRegressor((150, 150 * 4 * 8), max_iter=500)
+dimensions = (350, 150)
+nn1 = sklearn.neural_network.MLPRegressor(dimensions, max_iter=500)
 # nn1 = sklearn.multioutput.MultiOutputClassifier()
 time_before = time()
 nn1.fit(X, Y)
-print('Time elapsed:', time() - time_before)
-
+learning_time = time() - time_before
+print('Time elapsed:', learning_time)
 print('Saving to file....')
-with shelve.open('NN\\' + 'NN_CLF_1', 'n') as file:
+name = 'NN_supervised_1'
+comment = 'One_move_per_sample, turns numbers, begin samples, end samples'
+with shelve.open('NN\\' + name, 'n') as file:
     file['supervised'] = nn1
-    file['comment'] = 'One_move_per_sample\n' \
-                      + 'Turn indicator '
+    file['comment'] = comment
 
+with open('learning_log.txt', 'a') as file:
+    file.write('NN name: {}\n'.format(name))
+    file.write('NN comment: {}\n'.format(comment))
+    file.write('All samples:      {} 000\n'.format(samples_count))
+    file.write('Samples grabbed:  {} %\n'.format( (len(Y) / samples_count / 10)))
+    file.write('Learning layers:  {}\n'.format(dimensions))
+    file.write('Learning time:    {} m\n\n'.format(round(learning_time/60), 2))
 # test_X = [[78, 37, 11, 48, 32, 27, 62, 90, 1, 1, 100, 100]]
 # test_X = np.array(test_X).reshape(-1,1)
 
