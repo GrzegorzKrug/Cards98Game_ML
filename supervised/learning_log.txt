@@ -1,17 +1,86 @@
-Learning samples: 10000
-Samples grabbed:  98.95 %
-Time elapsed:     26.985543489456177 s
-
-All samples:      10000
-Samples grabbed:  99.14 %
-Learning layers:  (250, 150)
-Time elapsed:     51.98997354507446 s
-
 NN name: NN_supervised_1
-NN comment: 
-Turn indicator 
-All samples:      10 000
-Samples grabbed:  98.91 %
+NN comment: One move per sample, turns numbers, begin samples, end samples
+All samples:      100 000
+Samples grabbed:  99.068 %
 Learning layers:  (350, 150)
-Time elapsed:     77.46543073654175 s
+Learning time:    5532.702452421188 s
+Failed! Max iters.
+
+NN name: NN_supervised_2
+NN comment: One move per sample, turns numbers, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.03999999999999 %
+Learning layers:  3136
+Learning time:    7 m
+
+NN name: NN_supervised_9
+NN comment: One move per sample, turns numbers, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.21000000000001 %
+Learning layers:  3136
+Learning time:    9.03 m
+
+NN name:          NN_supervised_10
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.03 %
+Learning layers:  (100, 3136)
+Max iters:        100
+Learning Time:    3.49 m
+
+NN name:          NN_supervised_11
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.0 %
+Learning layers:  (100, 3136)
+Max iters:        500
+Learning Time:    8.99 m
+
+NN name:          NN_supervised_12
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      50 000
+Samples grabbed:  99.004 %
+Learning layers:  (50, 3136)
+Max iters:        500
+Learning Time:    105.58 m
+
+NN name:          NN_supervised_13
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      50 000
+Samples grabbed:  99.0 %
+Learning layers:  32
+Max iters:        500
+Learning Time:    0.47 m
+
+NN name:          NN_supervised_14
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      50 000
+Samples grabbed:  99.026 %
+Learning layers:  100
+Max iters:        10
+Learning Time:    0.05 m
+
+NN name:          NN_supervised_15
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      50 000
+Samples grabbed:  98.918 %
+Learning layers:  (64, 64)
+Max iters:        200
+Learning Time:    2.16 m
+
+NN name:          NN_supervised_16
+NN comment:       One move per sample, turns numbers, begin samples, end samples
+All samples:      50 000
+Samples grabbed:  99.038 %
+Learning layers:  (64, 64)
+Max iters:        400
+Learning Time:    8.01 m
+
+NN name:          NN_supervised_17
+NN comment:       One move per sample, begin samples, end samples
+All samples:      50 000
+Samples grabbed:  99.03 %
+Learning layers:  (64, 64)
+Max iters:        500
+Learning Time:    18.34 m
 

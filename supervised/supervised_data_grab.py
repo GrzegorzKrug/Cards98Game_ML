@@ -89,7 +89,7 @@ class Grab_Teaching_Data():
                 if len(hand) <= 0:
                     continue
 
-                deck = None  # removing deck 
+                deck = None  # removing deck
 
             result = self.attach_score_to_state(deck, hand, piles, score_min)
             if result is None:
