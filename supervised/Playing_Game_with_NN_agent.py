@@ -21,7 +21,7 @@ sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('NN\\' + 'NN_CLF_1') as file:
+with shelve.open('NN\\' + 'NN_supervised_1') as file:
     nn1 = file['supervised']
     # file['comment'] = 'One_move_per_sample'
 

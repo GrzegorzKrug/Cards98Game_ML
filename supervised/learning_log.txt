@@ -1,0 +1,17 @@
+Learning samples: 10000
+Samples grabbed:  98.95 %
+Time elapsed:     26.985543489456177 s
+
+All samples:      10000
+Samples grabbed:  99.14 %
+Learning layers:  (250, 150)
+Time elapsed:     51.98997354507446 s
+
+NN name: NN_supervised_1
+NN comment: 
+Turn indicator 
+All samples:      10 000
+Samples grabbed:  98.91 %
+Learning layers:  (350, 150)
+Time elapsed:     77.46543073654175 s
+

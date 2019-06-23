@@ -84,14 +84,12 @@ class Grab_Teaching_Data():
             elif phase == 'endgame':
                 piles = deck[0:4]  # placing 4 random cards on stacks
                 deck = deck[4:]
-
-                # random_remove = int(np.random.rand() * (8))  # 2:99 -> 98 cards, 98-8-4=86 -> index from 0=85
-                hand = deck[0:int(np.random.rand() * (7) + 1)]  # taking 8 random cards to hand
+                hand = deck[:int(np.random.rand() * (7) + 1)]  # taking 8 random cards to hand
 
                 if len(hand) <= 0:
                     continue
-                deck = None
 
+                deck = None  # removing deck 
 
             result = self.attach_score_to_state(deck, hand, piles, score_min)
             if result is None:
