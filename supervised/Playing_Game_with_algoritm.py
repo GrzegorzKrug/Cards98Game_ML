@@ -2,22 +2,14 @@ import shelve
 import numpy as np
 import os, sys
 
-def convert_list_to_matrix(this_list):
-    if type(this_list) == int:
-        this_list = [this_list]
 
-    matrix = np.zeros(98)
-    for item in this_list:
-        matrix[item - 2] = 1
-    return matrix
 
 mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with open('__run_count__.txt', 'r') as file:
-    last_num = file.read()
+
 
 with shelve.open('NN\\' + 'NN_supervised_' + last_num) as file:
     nn1 = file['supervised']
