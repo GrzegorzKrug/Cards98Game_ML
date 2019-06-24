@@ -84,3 +84,45 @@ Learning layers:  (64, 64)
 Max iters:        500
 Learning Time:    18.34 m
 
+NN name:          NN_supervised_18
+NN comment:       One move per sample, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.06 %
+Learning layers:  (100, 50, 64)
+Max iters:        500
+Learning Time:    0.78 m
+
+NN name:          NN_supervised_19
+NN comment:       One move per sample, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.04 %
+Learning layers:  (100, 50, 64)
+Max iters:        500
+Learning Time:    1.22 m
+!! Max iters !!
+
+NN name:          NN_supervised_20
+NN comment:       One move per sample, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.07 %
+Learning layers:  (100, 50, 64)
+Max iters:        700
+Learning Time:    1.96 m
+!! Max iters !!
+
+NN name:          NN_supervised_21
+NN comment:       One move per sample, begin samples, end samples
+All samples:      10 000
+Samples grabbed:  99.11 %
+Learning layers:  (100, 64, 50, 32)
+Max iters:        700
+Learning Time:    0.73 m
+
+NN name:          NN_supervised_22
+NN comment:       One move per sample, begin samples, end samples
+All samples:      20 000
+Samples grabbed:  99.095 %
+Learning layers:  (100, 64, 50, 32)
+Max iters:        700
+Learning Time:    3.17 m
+

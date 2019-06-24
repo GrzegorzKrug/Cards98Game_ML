@@ -21,17 +21,13 @@ sys.path.append(mypackage_path)
 
 from GameCards98 import GameCards98
 
-with shelve.open('NN\\' + 'NN_supervised_17') as file:
+with shelve.open('NN\\' + 'NN_supervised_22') as file:
     nn1 = file['supervised']
-
-# test_X = [[39, 53, 96, 13, 4, 90, 58, 72, 1, 4, 99, 100]]
-# print(nn1.predict(test_X))
 
 
 game = GameCards98()
 game.reset()
 game.hand_fill()
-# game.display_table()
 score = 0
 while True:
     game.hand_fill()
@@ -44,7 +40,7 @@ while True:
     hand_matrix = convert_list_to_matrix(hand)
     # deck_matrix = convert_list_to_matrix(deck)
 
-    table = [np.concatenate((hand_matrix, piles))] # searching score 100
+    table = [np.concatenate((hand_matrix, piles))]
     move = nn1.predict(table)
 
     hand, pile = int(round(move[0][0])), int(round(move[0][1]))

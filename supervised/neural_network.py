@@ -20,10 +20,10 @@ def __run_count__(readonly=False, step=1):
     return str(num)
 
 data = Grab_Teaching_Data()
-samples_count = 50  # [k]
+samples_count = 20  # [k]
 score_min = 75
-nn_dimensions = (64, 64)
-max_iter = 500
+nn_dimensions = (100, 64, 50, 8*4)
+max_iter = 700
 name = 'NN_supervised_' + __run_count__()
 
 
@@ -52,7 +52,7 @@ for sample in samples:
 # X.reshape(1, -1)
 
 print('Learning {} ...'.format(name))
-nn1 = sklearn.neural_network.MLPRegressor(nn_dimensions, max_iter=max_iter)
+nn1 = sklearn.neural_network.MLPRegressor(nn_dimensions, max_iter=max_iter,)
 # nn1 = sklearn.multioutput.MultiOutputClassifier()
 
 time_before = time()  # Not decorated
