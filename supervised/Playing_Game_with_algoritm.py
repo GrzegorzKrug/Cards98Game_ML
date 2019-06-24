@@ -37,12 +37,12 @@ while True:
 
     # input('next...')
     status, comment = game.end_condition()
+    if status:
+        input(comment)
     if status is not None or game.score < - 10:
 
         print(comment)
         break
 
-
-
 game.display_table(show_chances=False)
-print('End Game')
+

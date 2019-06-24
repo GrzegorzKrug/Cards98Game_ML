@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff974307-0782-43fa-addb-f7cff82f2fba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mypackage/GameCards98.py" beforeDir="false" afterPath="$PROJECT_DIR$/mypackage/GameCards98.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised/Playing_Game_with_NN_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supervised/Playing_Game_with_algoritm.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised/Playing_Game_with_algoritm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervised/supervised_data_grab.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised/supervised_data_grab.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/supervised/Playing_Game_with_algoritm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="323">
+              <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -521,8 +518,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/supervised/Playing_Game_with_algoritm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        <state relative-caret-position="323">
+          <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
