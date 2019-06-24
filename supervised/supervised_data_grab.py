@@ -7,6 +7,7 @@ mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append( mypackage_path )
 # from GameCards98 import GameCards98
 
+
 def time_decorator(some_func):
     def check_time(*args, **kwargs):
         time0 = time()
@@ -15,6 +16,7 @@ def time_decorator(some_func):
         print('Time elapsed: {0}'.format(time() - time0))
         return output
     return  check_time
+
 
 class Grab_Teaching_Data():
     def __init__(self):

@@ -13,8 +13,7 @@ def convert_list_to_matrix(this_list):
 
 mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
 sys.path.append(mypackage_path)
-
-from GameCards98 import GameCards98
+from GameCards98 import GameCards98 # importing from diffrent directory
 
 with open('__run_count__.txt', 'r') as file:
     last_num = file.read()

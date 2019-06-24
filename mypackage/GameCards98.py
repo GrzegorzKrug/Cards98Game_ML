@@ -115,7 +115,7 @@ class GameCards98:
             except IndexError:
                 return False
 
-    def display_table(self):
+    def display_table(self, show_chances=True):
         #
         # Showing Table.
         # Showing Hand.
@@ -133,13 +133,18 @@ class GameCards98:
         hand = tt.Texttable()
         [lower_chance, higher_chance] = self.calculate_chance_10(self.hand)
 
-        lower_chance_row = [str(i)+'%' for i in lower_chance]  # Making text list, Adding % to number        
+        if show_chances:
+            lower_chance_row = [str(i)+'%' for i in lower_chance]  # Making text list, Adding % to number
+
         hand_with_nums = [str(i+1)+'# '+str(j) for i, j in enumerate(self.hand)]  # Numerated Hand
-        higher_chance_row = [str(i)+'%' for i in higher_chance]  # Making text list, Adding % to number
-        
-        hand.add_row(['Lower Card Chance'] + lower_chance_row)        
+        if show_chances:
+            higher_chance_row = [str(i)+'%' for i in higher_chance]  # Making text list, Adding % to number
+
+        if show_chances:
+            hand.add_row(['Lower Card Chance'] + lower_chance_row)
         hand.add_row(['Hand'] + hand_with_nums)
-        hand.add_row(['Higher Card Chance'] + higher_chance_row)
+        if show_chances:
+            hand.add_row(['Higher Card Chance'] + higher_chance_row)
         print(hand.draw())
 
     def end_condition(self):
@@ -160,12 +165,15 @@ class GameCards98:
 
         if next_move:
             end_game = None
+            comment = 'Next Move available.'
         elif len(self.hand) == 0 and len(self.deck) == 0:
             end_game = True
+            comment = 'You win!'
         else:
             end_game = False
+            comment = 'You lost! No moves available'
 
-        return end_game
+        return end_game, comment
 
     def get_user_input(self):
         #
