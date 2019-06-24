@@ -1,6 +1,7 @@
 import numpy as np
 import sklearn.neural_network
 # import sklearn.multioutput
+from time import time
 import shelve
 from supervised_data_grab import *
 
@@ -19,13 +20,24 @@ def __run_count__(readonly=False, step=1):
 
     return str(num)
 
-data = Grab_Teaching_Data()
-samples_count = 20  # [k]
-score_min = 75
-nn_dimensions = (100, 64, 50, 8*4)
-max_iter = 700
-name = 'NN_supervised_' + __run_count__()
+def time_decorator_tell_me_duration(func):
+    def wrapper(*args, **kwargs):
 
+        time0 = time()
+        out = func(*args, **kwargs)
+        duration = time() - time0
+        return  duration
+    return  wrapper
+
+# Possible table layout
+# 442774  960455  336142  233600
+samples_count = 1500  # [k]
+score_min = 75
+nn_dimensions = (8*4)
+max_iter = 500
+
+data = Grab_Teaching_Data()
+name = 'NN_supervised_' + __run_count__()
 
 # input('Are you sure you want to retrain your network? ...')
 print('Ok, collecting samples...')
@@ -56,6 +68,7 @@ nn1 = sklearn.neural_network.MLPRegressor(nn_dimensions, max_iter=max_iter,)
 # nn1 = sklearn.multioutput.MultiOutputClassifier()
 
 time_before = time()  # Not decorated
+# @time_decorator_tell_me_duration
 nn1.fit(X, Y)
 learning_time = time() - time_before # Not decorated
 

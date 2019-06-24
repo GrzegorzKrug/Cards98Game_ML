@@ -126,3 +126,27 @@ Learning layers:  (100, 64, 50, 32)
 Max iters:        700
 Learning Time:    3.17 m
 
+NN name:          NN_supervised_23
+NN comment:       One move per sample, begin samples, end samples
+All samples:      20 000
+Samples grabbed:  99.06 %
+Learning layers:  (100, 100, 50, 32)
+Max iters:        700
+Learning Time:    3.37 m
+
+NN name:          NN_supervised_24
+NN comment:       One move per sample, begin samples, end samples
+All samples:      20 000
+Samples grabbed:  99.06 %
+Learning layers:  (100, 100, 100, 32)
+Max iters:        700
+Learning Time:    4.76 m
+
+NN name:          NN_supervised_25
+NN comment:       One move per sample, begin samples, end samples
+All samples:      150 000
+Samples grabbed:  98.9933 %
+Learning layers:  (300, 32)
+Max iters:        500
+Learning Time:    58.33 m
+
