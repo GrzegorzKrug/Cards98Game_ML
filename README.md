@@ -28,3 +28,8 @@ My version of game refils hand after each card played
 
 (Originally player plays 2 cards and then  refils his hand)
 
+#Possible deck orders:
+98! = 9.43e+153
+
+#Starting Hands:
+98 * 97 * .. * 91 = 6.35e+15

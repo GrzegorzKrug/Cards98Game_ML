@@ -15,10 +15,10 @@ def time_decorator(some_func):
         # print('Excecuted  "{0}()"'.format(some_func.__name__))
         print('Time elapsed: {0}'.format(time() - time0))
         return output
-    return  check_time
+    return check_time
 
 
-class Grab_Teaching_Data():
+class Grab_Teaching_Data:
     def __init__(self):
         self.N = 100
         self.states = []
@@ -37,7 +37,7 @@ class Grab_Teaching_Data():
 
         for item in this_list:
             matrix[item - 2] = 1
-        return  matrix
+        return matrix
 
     @time_decorator
     def generate_random_states(self, N=None, score_min = 1):
@@ -86,7 +86,7 @@ class Grab_Teaching_Data():
             elif phase == 'endgame':
                 piles = deck[0:4]  # placing 4 random cards on stacks
                 deck = deck[4:]
-                hand = deck[:int(np.random.rand() * (7) + 1)]  # taking 8 random cards to hand
+                hand = deck[:int(np.random.rand() * 7 + 1)]  # taking 8 random cards to hand
 
                 if len(hand) <= 0:
                     continue
@@ -104,7 +104,7 @@ class Grab_Teaching_Data():
             turn = 90 + 8 - len(hand)
         else:
             turn = 90 - len(deck)
-        for h,this_hand in enumerate(hand):
+        for h, this_hand in enumerate(hand):
             for p, this_pile in enumerate(piles):
                 move = (h, p)
                 score = self.check_if_move_is_valid(deck, hand, piles, move)
@@ -118,7 +118,7 @@ class Grab_Teaching_Data():
                     # piles_matrix = self.convert_list_to_matrix(piles)
 
                     this_dict = {'deck': deck, 'hand': hand_matrix, 'piles': piles, 'score': score,
-                                 'move': (h, p), 'turn':turn}
+                                 'move': (h, p), 'turn': turn}
                     possible_moves.append(this_dict)
 
         if best_move_only and len(possible_moves) > 0:

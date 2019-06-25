@@ -3,7 +3,8 @@ import sklearn.neural_network
 # import sklearn.multioutput
 from time import time
 import shelve
-from supervised_data_grab import *
+from supervised_data_grab import Grab_Teaching_Data
+
 
 def __run_count__(readonly=False, step=1):
     num = 0
@@ -20,17 +21,17 @@ def __run_count__(readonly=False, step=1):
 
     return str(num)
 
+
 def time_decorator_tell_me_duration(func):
     def wrapper(*args, **kwargs):
 
         time0 = time()
         out = func(*args, **kwargs)
         duration = time() - time0
-        return  duration
-    return  wrapper
+        return duration
+    return wrapper
 
-# Possible table layout
-# 442774  960455  336142  233600
+
 samples_count = 15  # [k]
 score_min = 75
 nn_dimensions = (98*97, int(8*4/2))
@@ -50,31 +51,19 @@ X = []
 Y = []
 for sample in samples:
     new_sample = np.concatenate((sample['hand'], sample['piles']))
-    # new_score = []
-    # for key, value in sample.items():
-    #     if key == 'deck' or key == :
-    #         continue
-    #     elif key == 'score':
-    #         new_score.append(value)
-    #     else:
-    #         new_sample = new_sample + (list(value))
     X.append(new_sample)
-    Y.append( sample['move'])
-# X = np.array(X)
-# X.reshape(1, -1)
+    Y.append(sample['move'])
 
 print('Learning {} ...'.format(name))
 nn1 = sklearn.neural_network.MLPRegressor(nn_dimensions, max_iter=max_iter,)
-# nn1 = sklearn.multioutput.MultiOutputClassifier()
+
 
 time_before = time()  # Not decorated
-# @time_decorator_tell_me_duration
 nn1.fit(X, Y)
-learning_time = time() - time_before # Not decorated
+learning_time = time() - time_before  # Not decorated
 
 print('Time elapsed:', learning_time)
 print('Saving to file....')
-
 
 
 comment = 'One move per sample, begin samples, end samples'
@@ -90,13 +79,3 @@ with open('learning_log.txt', 'a') as file:
     file.write('Learning layers:  {}\n'.format(nn_dimensions))
     file.write('Max iters:        {}\n'.format(max_iter))
     file.write('Learning Time:    {} m\n\n'.format(round(learning_time/60, 2)))
-
-# test_X = [[78, 37, 11, 48, 32, 27, 62, 90, 1, 1, 100, 100]]
-# test_X = np.array(test_X).reshape(-1,1)
-
-# predicted = nn1.predict(test_X)
-# print(predicted)
-# # [[0.68037785 1.48963757]]
-#
-# print('Hand =', predicted[0][0] )
-# print('Pile =', predicted[0][1] )

@@ -251,7 +251,7 @@ class GameCards98:
             
     def play_card(self, hand_id, pile_id):
         #
-        # Returns List [Bool, Score]
+        # Returns List Bool
         # Plays Card from hand to pile.
         # Checks for Valid move.
         # Invalid moves return None.

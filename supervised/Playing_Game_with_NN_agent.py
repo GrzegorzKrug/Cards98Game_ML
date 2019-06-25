@@ -2,6 +2,7 @@ import shelve
 import numpy as np
 import os, sys
 
+
 def convert_list_to_matrix(this_list):
     if type(this_list) == int:
         this_list = [this_list]
@@ -11,7 +12,8 @@ def convert_list_to_matrix(this_list):
         matrix[item - 2] = 1
     return matrix
 
-mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
+
+mypackage_path = os.path.abspath(os.getcwd() + '..' + 'mypackage')
 sys.path.append(mypackage_path)
 from GameCards98 import GameCards98 # importing from diffrent directory
 
@@ -40,24 +42,18 @@ while True:
 
     table = [np.concatenate((hand_matrix, piles))]
     move = nn1.predict(table)
-
     hand, pile = int(round(move[0][0])), int(round(move[0][1]))
-    # print(hand)
-    # print(pile)
-
 
     score_pre = game.score  # capture score
-    game.play_card(hand, pile)
+    game.play_card(hand, pile)  # play Card
     score_gained = game.score - score_pre  # compare score after playing card
-    # print('My move', hand + 1, pile + 1)
-    print('My move', hand + 1, pile + 1, '\t', 'Score gained=', score_gained)
 
-    # input('next...')
+    print('My move', hand + 1, pile + 1, '\t', 'Score gained=', score_gained)  # Show me move
+
     status, comment = game.end_condition()
     if status is not None or game.score < - 10 or score_gained < 0:
         print('Game Over!')
         break
-
 
 
 game.display_table()
