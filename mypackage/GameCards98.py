@@ -115,7 +115,7 @@ class GameCards98:
             except IndexError:
                 return False
 
-    def display_table(self, show_chances=True):
+    def display_table(self, show_chances=False):
         #
         # Showing Table.
         # Showing Hand.

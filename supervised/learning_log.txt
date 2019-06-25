@@ -158,3 +158,11 @@ Learning layers:  32
 Max iters:        500
 Learning Time:    14.13 m
 
+NN name:          NN_supervised_28
+NN comment:       One move per sample, begin samples, end samples
+All samples:      15 000
+Samples grabbed:  99.0333 %
+Learning layers:  (9506, 16)
+Max iters:        500
+Learning Time:    23.12 m
+

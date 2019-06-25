@@ -31,9 +31,9 @@ def time_decorator_tell_me_duration(func):
 
 # Possible table layout
 # 442774  960455  336142  233600
-samples_count = 1500  # [k]
+samples_count = 15  # [k]
 score_min = 75
-nn_dimensions = (8*4)
+nn_dimensions = (98*97, int(8*4/2))
 max_iter = 500
 
 data = Grab_Teaching_Data()
