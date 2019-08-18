@@ -2,12 +2,12 @@ import shelve
 import numpy as np
 import os, sys
 from supervised_data_grab import Grab_Teaching_Data
-
-
 from GameCards98 import GameCards98  # importing from diffrent directory
 
 win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
+
+
 X = 100
 for x in range(X):
     game = GameCards98()
@@ -15,6 +15,7 @@ for x in range(X):
     game.hand_fill()
     score = 0
     app1 = Grab_Teaching_Data()
+    
     while True:
         game.hand_fill()
         # game.display_table()

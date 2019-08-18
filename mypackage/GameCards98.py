@@ -1,8 +1,7 @@
 import random  # random
 import re  # regex
 import json
-import sklearn.neural_network
-import matplotlib.pyplot as plt
+import sys
 import numpy as np
 # import pprint
 # import tensorflow
