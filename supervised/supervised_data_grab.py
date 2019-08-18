@@ -3,8 +3,8 @@ import  numpy as np
 import shelve
 from time import  time
 
-mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
-sys.path.append( mypackage_path )
+#mypackage_path = os.path.abspath(os.getcwd() + '\..' + '\mypackage')
+#sys.path.append( mypackage_path )
 # from GameCards98 import GameCards98
 
 

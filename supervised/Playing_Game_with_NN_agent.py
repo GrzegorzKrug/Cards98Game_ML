@@ -13,8 +13,8 @@ def convert_list_to_matrix(this_list):
     return matrix
 
 
-mypackage_path = os.path.abspath(os.getcwd() + '..' + 'mypackage')
-sys.path.append(mypackage_path)
+#mypackage_path = os.path.abspath(os.getcwd() + '..' + 'mypackage')
+#sys.path.append(mypackage_path)
 from GameCards98 import GameCards98 # importing from diffrent directory
 
 with open('__run_count__.txt', 'r') as file:

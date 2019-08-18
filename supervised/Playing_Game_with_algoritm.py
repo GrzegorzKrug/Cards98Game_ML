@@ -8,7 +8,18 @@ win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
 
 
-X = 100
+##sys.path.remove(sys.path.abspath(__file__))
+
+
+for line in sys.path:
+    print(line)
+
+
+##for m in sys.modules:
+##    if 'main' in m:
+##        print(m)
+
+X = 20
 for x in range(X):
     game = GameCards98()
     game.reset()
