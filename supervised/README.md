@@ -11,4 +11,8 @@ This method was not meant to succed. I was just curious if machine can figure ou
 
 # Last results
 
-4% win rate
+# Easy Version
+# Win ratio = 3.5 ~ 4.12 %
+
+# Harder Version
+# Win ratio = 0.57 ~ 0.64 %

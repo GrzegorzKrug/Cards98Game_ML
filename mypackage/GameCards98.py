@@ -29,7 +29,8 @@ class GameCards98:
         self.move_count = 0
         self.turn = 0
         self.score = 0
-        'NN Values for feedback'
+
+        # NN Values for feedback
         self.GoodMove = 1
         self.WrongMove = -1
         self.SkipMove = 9  # This move + 8 cards in hand
@@ -166,6 +167,7 @@ class GameCards98:
         if next_move:
             end_game = None
             comment = 'Next Move available.'
+
         elif len(self.hand) == 0 and len(self.deck) == 0:
             end_game = True
             comment = 'You win!'
@@ -185,9 +187,8 @@ class GameCards98:
         #   Second object is score feedback
         #
         self.hand_ind, self.pile_ind = -1, -1
-        print('Select Card and pile:')
+        print('Select card and pile:')
         game_input = input()
-        
         nums = re.findall(r'\d', game_input)
         
         if len(nums) == 2:
@@ -211,7 +212,7 @@ class GameCards98:
         # Fill Hand with cards from deck
         # Hand is always 8
         #
-        while len(self.hand) < 8 and len(self.deck) > 0:
+        while len(self.hand) < 7 and len(self.deck) > 0:
             self.hand.append(self.deck[0])
             self.deck.pop(0)
         self.hand.sort()
@@ -230,8 +231,9 @@ class GameCards98:
         #        
         while True:
             self.hand_fill()
-            card_array = self.cards_left_in_array()
-            status = self.end_condition()
+            # card_array = self.cards_left_in_array()
+            status, comment = self.end_condition()
+
             if status is not None:
                 print('\n'*5)
                 return status
@@ -241,8 +243,9 @@ class GameCards98:
             user_input = self.get_user_input()  # Replace user input with NN
             
             if user_input:
-                score = self.play_card(self.hand_ind, self.pile_ind)
-                self.score += score
+                self.play_card(self.hand_ind, self.pile_ind)
+                # score = self.play_card(self.hand_ind, self.pile_ind)
+                # self.score += score
                 
             elif user_input is False:
                 return False  # Interupted by user            
@@ -250,13 +253,13 @@ class GameCards98:
                 pass
             
     def play_card(self, hand_id, pile_id):
-        #
+        '''
         # Returns List Bool
         # Plays Card from hand to pile.
         # Checks for Valid move.
         # Invalid moves return None.
         # Add Turn Counter at proper moves.
-        #
+        '''
         self.move_count += 1
         try:
             if hand_id < 0 or hand_id > 7:
@@ -308,6 +311,7 @@ class GameCards98:
                     return False
             else:
                 input('Impossible! How did u get here?!')
+
         except IndexError:
             print('Not valid move!')
             self.score += self.WrongMove
@@ -336,12 +340,16 @@ class GameCards98:
             print("\nYou win!")
         else:
             print("\nYou lost!")
+
 # = = = =  End Class = = = =
 
-# app = GameCards98()
-# app.start_game(load_save=False)
-# file = open('data/temp.json', 'w')
-# json.dump(app.deck, file)
-# file.close()
+if __name__ == '__main__':
+    print('Start')
+    app = GameCards98()
+    app.start_game(load_save=False)
 
-# data = dump(app.deck, Loader=Loader)
+    # file = open('data/temp.json', 'w')
+    # json.dump(app.deck, file)
+    # file.close()
+
+    # data = dump(app.deck, Loader=Loader)

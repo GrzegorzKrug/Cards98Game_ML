@@ -18,7 +18,7 @@ Example: you can always play card '63' on card '73', no matter where card '73' i
 
 
 
-Win by playing all cards !
+Win game, by playing all cards!
 
 
 

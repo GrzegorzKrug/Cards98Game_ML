@@ -3,13 +3,14 @@ import numpy as np
 import os, sys
 from supervised_data_grab import Grab_Teaching_Data
 
-mypackage_path = os.path.abspath(os.getcwd() + '..' + 'mypackage')
-sys.path.append(mypackage_path)
+# mypackage_path = os.path.abspath(os.getcwd() + '..' + 'mypackage')
+# sys.path.append(mypackage_path)
 from GameCards98 import GameCards98  # importing from diffrent directory
 
 win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
-for x in range(100):
+X = 10000
+for x in range(X):
     game = GameCards98()
     game.reset()
     game.hand_fill()
@@ -39,6 +40,10 @@ for x in range(100):
             # print(comment)
             break
 print('Win count =',win_count)
+print('Win ratio =',win_count/X*100, '%')
 
-# Win count = 412
-# Win % = 4.12
+# Easy Version
+# Win ratio = 3.5 ~ 4.12 %
+
+# Harder Version
+# Win ratio = 0.63 %
