@@ -3,13 +3,12 @@ import numpy as np
 import os, sys
 from supervised_data_grab import Grab_Teaching_Data
 
-# mypackage_path = os.path.abspath(os.getcwd() + '..' + 'mypackage')
-# sys.path.append(mypackage_path)
+
 from GameCards98 import GameCards98  # importing from diffrent directory
 
 win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
-X = 10000
+X = 100
 for x in range(X):
     game = GameCards98()
     game.reset()
