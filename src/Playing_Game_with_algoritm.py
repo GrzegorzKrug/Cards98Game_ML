@@ -1,25 +1,17 @@
 import shelve
 import numpy as np
 import os, sys
-from supervised_data_grab import Grab_Teaching_Data
-from GameCards98 import GameCards98  # importing from diffrent directory
+from supervised.supervised_data_grab import Grab_Teaching_Data
+##from GameCards98 import GameCards98  # importing from diffrent directory
+
+from GameCards98 import GameCards98
 
 win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
 
 
-##sys.path.remove(sys.path.abspath(__file__))
 
-
-for line in sys.path:
-    print(line)
-
-
-##for m in sys.modules:
-##    if 'main' in m:
-##        print(m)
-
-X = 20
+X = 2000
 for x in range(X):
     game = GameCards98()
     game.reset()

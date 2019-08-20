@@ -3,17 +3,9 @@ import re  # regex
 import json
 import sys
 import numpy as np
-# import pprint
-# import tensorflow
-# import keras_gpu
-# import keras
-
-# from tensorflow.keras import layers
-
 import texttable as tt
 
 
-# ks = tensorflow.keras
 class GameCards98:
     # Piles    1: GoingUp 2: GoingUp'
     #    3: GoingDown 4: GoingDown'
@@ -203,7 +195,8 @@ class GameCards98:
                     self.reset()
                     return None
                 
-                elif 'end' in word or 'over' in word:
+                elif 'end' in word or 'over' in word or 'quit' in word \
+                     or 'exit' in word:
                     return False
                 
     def hand_fill(self):
