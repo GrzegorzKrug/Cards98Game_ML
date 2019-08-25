@@ -42,7 +42,7 @@ Win game, by playing all cards!
 	- [x] collecting samples from "my gamestyle"
 	- [x] trying to replicate behaviour
 
-	*Supervised learning is failure in this case, problem is too big and too complex*
+		*Supervised learning is failure in this case, problem is too big and too complex*
 	
 - [ ] reinforced approach
 
