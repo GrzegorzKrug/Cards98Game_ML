@@ -20,9 +20,9 @@ Player can play card on decreasing pile only if card is lower than.
 
 *Excepions* are cards that vary by 10. 
 
-**Example**:
+	**Example**:
 
-	You can always play card '63' on card '73', no matter on which pile card '73' is currently placed
+		You can always play card '63' on card '73', no matter on which pile card '73' is currently placed
 
 ### Refiling Hand
 * **Easy version**: Refil hand each time you play card.
