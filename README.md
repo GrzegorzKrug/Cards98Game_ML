@@ -15,17 +15,13 @@ There are 4 piles to place cards on.
 Player can play cards on rising pile only if card is higher than card on pile
 Player can play card on decreasing pile only if card is lower than
 
-**Excepions** are cards that vary equal by 10
+**Excepions** are cards that vary equal by 10. *Example*:
 
->*Example*: you can always play card '63' on card '73', no matter where card '73' is currently placed
+>you can always play card '63' on card '73', no matter where card '73' is currently placed
 
 ### Refiling Hand
-* Easy version
-
-	Refil hand every card played
-* Hard Version
-
-	Refil hand after 2 cards was played.
+* **Easy version**: Refil hand every card played
+* **Hard version**:	Refil hand after 2 cards was played.
 
 ## Winning Game
 Win game, by playing all cards!
