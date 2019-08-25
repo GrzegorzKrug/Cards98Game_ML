@@ -7,8 +7,8 @@ After shufling deck, player takes 8 cards to hand.
 
 There are 4 piles to place cards on. 
 
-1 	| 1
-100 | 100
+|1 	| 1		|
+|100| 100	|
 
 Player can play cards on rising pile only if card is higher than card on pile
 Player can play card on decreasing pile only if card is lower than
