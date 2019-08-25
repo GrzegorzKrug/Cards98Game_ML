@@ -17,12 +17,14 @@ Player can play card on decreasing pile only if card is lower than
 
 **Excepions** are cards that vary equal by 10
 
-	 *Example*: you can always play card '63' on card '73', no matter where card '73' is currently placed
+>*Example*: you can always play card '63' on card '73', no matter where card '73' is currently placed
 
 ### Refiling Hand
 * Easy version
+
 	Refil hand every card played
 * Hard Version
+
 	Refil hand after 2 cards was played.
 
 ## Winning Game
