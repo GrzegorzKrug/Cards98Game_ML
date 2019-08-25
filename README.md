@@ -16,7 +16,7 @@ Player can play only cards from hand.
 
 Player can play cards on rising pile only if card is higher than card on pile.
 
-Player can play card on decreasing pile only if card is lower than.
+Player can play card on descending pile only if card is lower than caard on pile.
 
 *Excepions* are cards that vary by 10. 
 
