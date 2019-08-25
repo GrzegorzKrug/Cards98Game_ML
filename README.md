@@ -1,5 +1,6 @@
-# Player_98CardsGame
+#98CardsGame
 
+##Rules
 Player has 98 cards from 2 to 99 in deck
 
 After shufling deck, player takes 8 cards
