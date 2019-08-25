@@ -51,5 +51,5 @@ Number of unique starting Hands:
 
 
 ## About game
-I found this game in Google Play Store for android. I never won but wanted.
+I found this game in Google Play Store for android. I never won but I wanted. Now I know that my game decisions are not the best. 
 
