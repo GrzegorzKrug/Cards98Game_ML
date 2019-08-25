@@ -1,7 +1,7 @@
 # 98 Cards Game
 
 ## Rules
-Player has **98 cards** from 2 to 99 in deck
+Player has **98 cards** from 2 to 99 in deck.
 
 After shufling deck, player takes 8 cards to hand.
 
@@ -11,6 +11,8 @@ There are **4 piles** to place cards on.
 |---		|---	|---	|
 |Rising		|1 		| 1		|
 |Descending	|100	| 100	|
+
+Player can play only cards from hand.
 
 Player can play cards on rising pile only if card is higher than card on pile.
 
@@ -44,10 +46,10 @@ Win game, by playing all cards!
 
 ## Problem Complexity
 Possible deck orders:
-98! = **9.43e+153**
+	**98! = 9.43e+153**
 
 Number of unique starting Hands:
-98 * 97 * .. * 91 = **6.35e+15**
+	**98 * 97 * .. * 91 = 6.35e+15**
 
 
 ## About game
