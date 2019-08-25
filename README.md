@@ -29,17 +29,14 @@ Player can play card on decreasing pile only if card is lower than.
 ### Winning Game
 Win game, by playing all cards!
 
-## To do:
-[x] - my gamestyle implementation
-[x] - supervised approach
-[] - reinforced approach
-
-## Info
-I found this game in Google Play Store for android
-
-My version of game refils hand after each card played
-
-(Originally player plays 2 cards and then  refils his hand)
+# To do:
+- [x] My gamestyle algoritm
+	Easy version winratio: 4%
+	Harder version winratio: 0.5%
+	
+- [x] supervised approach
+	Failure, problem is too complex
+- [] reinforced approach
 
 ## Problem Complexity
 Possible deck orders:
@@ -47,3 +44,8 @@ Possible deck orders:
 
 Number of unique starting Hands:
 98 * 97 * .. * 91 = **6.35e+15**
+
+
+## About game
+I found this game in Google Play Store for android. I never won but wanted.
+
