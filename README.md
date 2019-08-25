@@ -33,12 +33,13 @@ Win game, by playing all cards!
 - [x] My gamestyle algoritm
 
 	Easy version winratio: 4%
+	
 	Harder version winratio: 0.5%
 	
 - [x] supervised approach
 
 	Failure, problem is too complex
-- [] reinforced approach
+- [ ] reinforced approach
 
 ## Problem Complexity
 Possible deck orders:
