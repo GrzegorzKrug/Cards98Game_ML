@@ -19,19 +19,24 @@ Player can play card on decreasing pile only if card is lower than
 
 *Example*: you can always play card '63' on card '73', no matter where card '73' is currently placed
 
+### Refiling Hand
+.* Easy version
+	Refil hand every card played
+.* Hard Version
+	Refil hand after 2 cards was played.
 
-### Winning Game
+## Winning Game
 Win game, by playing all cards!
 
 
-#### Info
+## Info
 I found this game in Google Play Store for android
 
 My version of game refils hand after each card played
 
 (Originally player plays 2 cards and then  refils his hand)
 
-#### Problem Complexity
+## Problem Complexity
 Possible deck orders:
 98! = **9.43e+153**
 
