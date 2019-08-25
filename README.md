@@ -23,12 +23,16 @@ Player can play card on decreasing pile only if card is lower than.
 	You can always play card '63' on card '73', no matter on which pile card '73' is currently placed
 
 ### Refiling Hand
-* **Easy version**: Refil hand every card played
+* **Easy version**: Refil hand each time you play card.
 * **Hard version**:	Refil hand after 2 cards was played.
 
-## Winning Game
+### Winning Game
 Win game, by playing all cards!
 
+## To do:
+[x] - my gamestyle implementation
+[x] - supervised approach
+[] - reinforced approach
 
 ## Info
 I found this game in Google Play Store for android
