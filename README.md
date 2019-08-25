@@ -34,9 +34,9 @@ Win game, by playing all cards!
 # To do:
 - [x] My gamestyle algoritm
 
-	*Easy version winratio*: 4%
+	*Easy version* win ratio: 4%
 	
-	*Harder version winratio*: 0.5%
+	*Harder version* win ratio: 0.5%
 	
 - [x] supervised approach
 
