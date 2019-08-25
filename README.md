@@ -20,6 +20,7 @@ Player can play card on decreasing pile only if card is lower than.
 
 **Example**:
 >You can always play card '63' on card '73', no matter where card '73' is currently placed
+
 	You can always play card '63' on card '73', no matter where card '73' is currently placed
 
 ### Refiling Hand
