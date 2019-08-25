@@ -39,8 +39,10 @@ Win game, by playing all cards!
 	*Harder version* win ratio: 0.5%
 	
 - [x] supervised approach
+	- [x] collecting samples from "my gamestyle"
+	- [x] trying to replicate behaviour
 
-	*Failure, problem is too complex*
+	*Supervised learning is failure in this case, problem is too big and too complex*
 	
 - [ ] reinforced approach
 
