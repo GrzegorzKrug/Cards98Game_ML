@@ -1,11 +1,11 @@
 # 98 Cards Game
 
 ## Rules
-Player has 98 cards from 2 to 99 in deck
+Player has **98 cards** from 2 to 99 in deck
 
 After shufling deck, player takes 8 cards to hand.
 
-There are 4 piles to place cards on. 
+There are **4 piles** to place cards on. 
 
 |Info		|Left 	|Right	|
 |---		|---	|---	|
@@ -16,12 +16,11 @@ Player can play cards on rising pile only if card is higher than card on pile.
 
 Player can play card on decreasing pile only if card is lower than.
 
-**Excepions** are cards that vary equal by 10. 
+*Excepions* are cards that vary by 10. 
 
 **Example**:
->You can always play card '63' on card '73', no matter where card '73' is currently placed
 
-	You can always play card '63' on card '73', no matter where card '73' is currently placed
+	You can always play card '63' on card '73', no matter on which pile card '73' is currently placed
 
 ### Refiling Hand
 * **Easy version**: Refil hand every card played
