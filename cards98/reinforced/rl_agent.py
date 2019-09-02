@@ -26,7 +26,7 @@ import sys
 for p in sys.path:
     print(p)
     
-from .reinforced import *
+from cards98game_ml.game import cards98
 
 input('End..')
 ##app = GameCards98()
