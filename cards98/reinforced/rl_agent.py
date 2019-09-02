@@ -22,11 +22,11 @@ class RLAgent:
 
 
 if __name__ == '__main__':
-    import sys
-    import os    
-    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    sys.path.insert(0, path)    
-    from game.cards98 import GameCards98
+##    import sys
+##    import os    
+##    path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+##    sys.path.insert(0, path)    
+##    from game.cards98 import GameCards98
     
 
     app = GameCards98()

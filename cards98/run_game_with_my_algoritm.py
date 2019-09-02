@@ -2,23 +2,21 @@ import shelve
 import numpy as np
 import os, sys
 from supervised.supervised_data_grab import Grab_Teaching_Data
-##from GameCards98 import GameCards98  # importing from diffrent directory
-
 from game.cards98 import GameCards98
 
 win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
 
-
-
 X = 10000
+print("Playing Cards98 game {} times".format(X))
 for x in range(X):
     game = GameCards98()
     game.reset()
     game.hand_fill()
     score = 0
     app1 = Grab_Teaching_Data()
-    
+    if (x + 1) % (X / 10) == 0:
+        print("Done in {} %".format((x + 1)/X*100))
     while True:
         game.hand_fill()
         # game.display_table()
@@ -42,8 +40,8 @@ for x in range(X):
         if status is not None or game.score < -10 or score_gained < 0:
             # print(comment)
             break
-print('Win count =',win_count)
-print('Win ratio =',win_count/X*100, '%')
+print('Win count =', win_count)
+print('Win ratio =', win_count/X*100, '%')
 
 # Easy Version
 # Win ratio = 3.5 ~ 4.12 %
