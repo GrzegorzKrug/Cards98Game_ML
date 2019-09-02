@@ -21,12 +21,10 @@ import matplotlib.pyplot as plt
 ##        self._var_init = None
 # ----------------------------------------------
 
-
 import sys
 for p in sys.path:
     print(p)
     
-from cards98game_ml.game import cards98
+from cards98.game.cards98 import GameCards98
 
-input('End..')
-##app = GameCards98()
+app = GameCards98()
