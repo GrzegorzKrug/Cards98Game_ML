@@ -115,7 +115,7 @@ class GameCards98:
         #
         print('\n' + '='*5, 'Turn'.center(8), '=', self.move_count)
         print('='*5, 'Score'.center(8), '=', self.score)
-        print('Cards Left:', self.deck)
+        print('Deck (cheating) :', self.deck)
 
         piles = tt.Texttable()        
         piles.add_row(['↑ Pile ↑', '1# ' + str(self.piles[0]), '2# ' + str(self.piles[1])])
@@ -340,8 +340,3 @@ if __name__ == '__main__':
     app = GameCards98()
     app.start_game(load_save=False)
 
-    # file = open('data/temp.json', 'w')
-    # json.dump(app.deck, file)
-    # file.close()
-
-    # data = dump(app.deck, Loader=Loader)

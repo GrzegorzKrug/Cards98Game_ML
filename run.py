@@ -2,7 +2,7 @@ import glob
 import os
 
 def main():
-    scripts = glob.glob("cards98/*.py")
+    scripts = glob.glob(r"cards98/[!_]*.py")
     while True:
         print('\nSelect script to run:')
         for i, s in enumerate(scripts):
