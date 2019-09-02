@@ -4,14 +4,14 @@ import os, sys
 from supervised.supervised_data_grab import Grab_Teaching_Data
 ##from GameCards98 import GameCards98  # importing from diffrent directory
 
-from GameCards98 import GameCards98
+from game.cards98 import GameCards98
 
 win_count = 0
 my_predict = Grab_Teaching_Data.attach_score_to_state
 
 
 
-X = 2000
+X = 10000
 for x in range(X):
     game = GameCards98()
     game.reset()
