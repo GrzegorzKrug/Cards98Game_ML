@@ -107,7 +107,7 @@ class GameCards98:
             except IndexError:
                 return False
 
-    def display_table(self, show_chances=False):
+    def display_table(self, show_chances=False, show_deck=False):
         #
         # Showing Table.
         # Showing Hand.
@@ -115,7 +115,8 @@ class GameCards98:
         #
         print('\n' + '='*5, 'Turn'.center(8), '=', self.move_count)
         print('='*5, 'Score'.center(8), '=', self.score)
-        print('Deck (cheating) :', self.deck)
+        if show_deck:
+            print('Deck (cheating) :', self.deck)
 
         piles = tt.Texttable()        
         piles.add_row(['↑ Pile ↑', '1# ' + str(self.piles[0]), '2# ' + str(self.piles[1])])
