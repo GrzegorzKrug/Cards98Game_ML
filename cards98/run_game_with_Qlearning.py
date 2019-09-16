@@ -1,6 +1,7 @@
 from game.cards98 import GameCards98
 from reinforced.rl_agent import RLAgent
 
+
 class game(GameCards98):
     def main_loop(self):
         ''' Main loop with game logic'''

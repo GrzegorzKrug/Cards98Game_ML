@@ -45,5 +45,5 @@ if __name__ == '__main__':
     path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     sys.path.insert(0, path)
     from game.cards98 import GameCards98
-    agent = RLAgent(num_states=98+4, num_actions=8+4, batch_size=100)
+    agent = RLAgent(num_states=98 + 4, num_actions=8+4, batch_size=100)
     app = GameCards98()
