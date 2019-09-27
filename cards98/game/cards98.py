@@ -20,6 +20,10 @@ class GameCards98:
         self.move_count = 0
         self.turn = 0
         self.score = 0
+        self.score_gained = 0
+        self.hand_ind = -1
+        self.pile_ind = -1
+        self.last_card_played = 0
 
         # NN Values for feedback
         self.GoodMove = 1
@@ -128,14 +132,12 @@ class GameCards98:
 
         if show_chances:
             lower_chance_row = [str(i)+'%' for i in lower_chance]  # Making text list, Adding % to number
-
-        hand_with_nums = [str(i+1)+'# '+str(j) for i, j in enumerate(self.hand)]  # Numerated Hand
-        if show_chances:
             higher_chance_row = [str(i)+'%' for i in higher_chance]  # Making text list, Adding % to number
-
-        if show_chances:
             hand.add_row(['Lower Card Chance'] + lower_chance_row)
+
+        hand_with_nums = [str(i + 1) + '# ' + str(j) for i, j in enumerate(self.hand)]  # Numerated Hand
         hand.add_row(['Hand'] + hand_with_nums)
+
         if show_chances:
             hand.add_row(['Higher Card Chance'] + higher_chance_row)
         print(hand.draw())
@@ -146,6 +148,11 @@ class GameCards98:
         # Checking if any move is valid.
         # Checking if any cards left.
         #
+        if self.score < -20 or self.turn > 150:
+            end_game = False
+            comment = 'You lost game!'
+            return end_game, comment
+
         next_move = None
         for hand_id in range(8):
             if next_move:
@@ -165,7 +172,7 @@ class GameCards98:
             comment = 'You win!'
         else:
             end_game = False
-            comment = 'You lost! No moves available'
+            comment = 'Game over! No moves available'
 
         return end_game, comment
 
@@ -254,53 +261,62 @@ class GameCards98:
         # Add Turn Counter at proper moves.
         '''
         self.move_count += 1
+        self.score_gained = 0  # reset value
         try:
-            if hand_id < 0 or hand_id > 7:
+            if hand_id < 0 or hand_id > 7:  # Invalid Hand index
                 print('Error: Invalid hand index')
                 self.score += self.WrongMove
+                self.score_gained = self.WrongMove
                 return False
 
-            elif pile_id < 0 or pile_id > 3:
+            elif pile_id < 0 or pile_id > 3:  # Invalid Pile index
                 print('Error: Invalid pile index')
                 self.score += self.WrongMove
+                self.score_gained = self.WrongMove
                 return False
 
-            elif pile_id == 0 or pile_id == 1:  # Rising Piles
-                if self.hand[hand_id] > self.piles[pile_id]:
+            elif pile_id == 0 or pile_id == 1:                          # Rising Piles
+                if self.hand[hand_id] > self.piles[pile_id]:            # Played card is higher
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
                     self.score += self.GoodMove
+                    self.score_gained = self.GoodMove
                     self.turn += 1
                     return True
 
-                elif self.hand[hand_id] == (self.piles[pile_id] - 10):
+                elif self.hand[hand_id] == (self.piles[pile_id] - 10):  # Played card is lower by 10
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
                     self.score += self.SkipMove
+                    self.score_gained = self.SkipMove
                     self.turn += 1
                     return True
-                else:
+                else:                                                   # Invalid Move
                     # print('Not valid move!')
                     self.score += self.WrongMove
+                    self.score_gained = self.WrongMove
                     return False
 
-            elif pile_id == 2 or pile_id == 3:  # Lowering Piles
-                if self.hand[hand_id] < self.piles[pile_id]:            
+            elif pile_id == 2 or pile_id == 3:                          # Lowering Piles
+                if self.hand[hand_id] < self.piles[pile_id]:            # Played card is lower
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)
                     self.score += self.GoodMove
+                    self.score_gained = self.GoodMove
                     self.turn += 1
                     return True
                 
-                elif self.hand[hand_id] == (self.piles[pile_id] + 10):
+                elif self.hand[hand_id] == (self.piles[pile_id] + 10):  # Played card is higher by 10
                     self.piles[pile_id] = self.hand[hand_id]
                     self.hand.pop(hand_id)                
                     self.score += self.SkipMove
+                    self.score_gained = self.SkipMove
                     return True
                 
-                else:
+                else:                                                   # Invalid Move
                     # print('Not valid move!')
                     self.score += self.WrongMove
+                    self.score_gained = self.WrongMove
                     return False
             else:
                 input('Impossible! How did u get here?!')
@@ -308,6 +324,7 @@ class GameCards98:
         except IndexError:
             print('Not valid move!')
             self.score += self.WrongMove
+            self.score_gained = self.WrongMove
             return False
 
     def reset(self):
@@ -328,11 +345,11 @@ class GameCards98:
             self.deck = json.load(file)
             file.close()
 
-        result = self.main_loop()
+        result, comment = self.main_loop()
         if result:
-            print("\nYou win!")
+            print(comment)
         else:
-            print("\nYou lost!")
+            print(comment)
 
 # = = = =  End Class = = = =
 
